@@ -2,9 +2,10 @@ import React from 'react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Star, ShieldCheck, Heart, Utensils, Award, TrendingUp, MapPin, Phone, Mail, Send } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Award, TrendingUp, MapPin, Mail, Send, Utensils } from 'lucide-react';
+import { BuyerRecommendations } from '../components/buyer/BuyerRecommendations';
 
-export const HomePage = () => {
+export const HomePage = ({ auth = { buyer: false } }) => {
     const navigate = useNavigate();
 
     const CategoryIcon = ({ type }) => {
@@ -36,40 +37,56 @@ export const HomePage = () => {
     return (
         <div style={{ color: '#1f2937' }}>
 
-            {/* Hero Section */}
-            <section style={{ textAlign: 'center', padding: '8rem 0 10rem' }}>
-                <h1 style={{
-                    fontSize: 'clamp(3.5rem, 8vw, 6rem)',
-                    fontWeight: '800',
-                    marginBottom: '2rem',
-                    letterSpacing: '-0.04em',
-                    lineHeight: 1.1,
-                    color: '#111827',
-                    textShadow: '0 2px 8px rgba(255,255,255,0.8)' /* Stronger text shadow for transparency */
-                }}>
-                    Premium Halal Meat<br />
-                    <span style={{
-                        background: 'linear-gradient(135deg, #10b981, #059669)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        display: 'inline-block',
-                        textShadow: 'none'
-                    }}>Delivered Fresh</span>
-                </h1>
-                <p style={{ fontSize: '1.5rem', color: '#111827', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: 1.6, fontWeight: '600', textShadow: '0 1px 2px rgba(255,255,255,1)' }}>
-                    Certified Zabiha Halal. Sourced from organic farms. Experience the difference in quality and purity.
-                </p>
-                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <Button variant="primary" onClick={() => navigate('/buyer')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
-                        Shop Now <ArrowRight size={24} style={{ marginLeft: '12px' }} />
-                    </Button>
-                    <Button variant="secondary" onClick={() => navigate('/work')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
-                        Become a Seller
-                    </Button>
-                </div>
-            </section>
+            {/* CONDITIONAL HEADER: Default Hero vs Buyer Welcome */}
+            {!auth.buyer ? (
+                /* Default Hero (Guest) */
+                <section style={{ textAlign: 'center', padding: '8rem 0 10rem' }}>
+                    <h1 style={{
+                        fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                        fontWeight: '800',
+                        marginBottom: '2rem',
+                        letterSpacing: '-0.04em',
+                        lineHeight: 1.1,
+                        color: '#111827',
+                        textShadow: '0 2px 8px rgba(255,255,255,0.8)'
+                    }}>
+                        Premium Halal Meat<br />
+                        <span style={{
+                            background: 'linear-gradient(135deg, #10b981, #059669)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            display: 'inline-block',
+                            textShadow: 'none'
+                        }}>Delivered Fresh</span>
+                    </h1>
+                    <p style={{ fontSize: '1.5rem', color: '#111827', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: 1.6, fontWeight: '600', textShadow: '0 1px 2px rgba(255,255,255,1)' }}>
+                        Certified Zabiha Halal. Sourced from organic farms. Experience the difference in quality and purity.
+                    </p>
+                    <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Button variant="primary" onClick={() => navigate('/buyer')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
+                            Shop Now <ArrowRight size={24} style={{ marginLeft: '12px' }} />
+                        </Button>
+                        <Button variant="secondary" onClick={() => navigate('/work')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
+                            Become a Seller
+                        </Button>
+                    </div>
+                </section>
+            ) : (
+                /* Buyer Personalized Welcome (Logged In) */
+                <div style={{ paddingTop: '8rem' }}>
+                    <section style={{ padding: '0 1rem 2rem 1rem', textAlign: 'center' }}>
+                        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
+                            Welcome back, <span style={{ color: '#10b981' }}>Burhan</span>!
+                        </h1>
+                        <p style={{ fontSize: '1.1rem', color: '#6b7280' }}>Ready to order fresh meat for your kitchen today?</p>
+                    </section>
 
-            {/* Categories Section */}
+                    {/* New Recommendations Component */}
+                    <BuyerRecommendations />
+                </div>
+            )}
+
+            {/* Categories Section (Always Visible) */}
             <section style={{ marginBottom: '10rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Selection</span>
@@ -84,37 +101,39 @@ export const HomePage = () => {
                 </div>
             </section>
 
-            {/* Why Us Section */}
-            <section style={{ marginBottom: '10rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                    <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Promise</span>
-                    <h2 style={{ fontSize: '3rem', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Why Choose Us?</h2>
-                </div>
+            {/* Hide "Why Us" for buyers to reduce clutter, show only for guests */}
+            {!auth.buyer && (
+                <section style={{ marginBottom: '10rem' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                        <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Promise</span>
+                        <h2 style={{ fontSize: '3rem', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Why Choose Us?</h2>
+                    </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
-                    <Card className="feature-card">
-                        <div style={{ padding: '3rem', textAlign: 'center' }}>
-                            <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><ShieldCheck size={56} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>100% Certified Halal</h3>
-                            <p style={{ color: '#6b7280', fontWeight: '500' }}>Strict compliance with Islamic dietary laws. Verified at every step.</p>
-                        </div>
-                    </Card>
-                    <Card className="feature-card">
-                        <div style={{ padding: '3rem', textAlign: 'center' }}>
-                            <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><Award size={56} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Premium Quality</h3>
-                            <p style={{ color: '#6b7280', fontWeight: '500' }}>Hand-picked from the best organic farms. No hormones/antibiotics.</p>
-                        </div>
-                    </Card>
-                    <Card className="feature-card">
-                        <div style={{ padding: '3rem', textAlign: 'center' }}>
-                            <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><TrendingUp size={56} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Community Focused</h3>
-                            <p style={{ color: '#6b7280', fontWeight: '500' }}>Empowering local farmers and delivery partners in your area.</p>
-                        </div>
-                    </Card>
-                </div>
-            </section>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
+                        <Card className="feature-card">
+                            <div style={{ padding: '3rem', textAlign: 'center' }}>
+                                <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><ShieldCheck size={56} /></div>
+                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>100% Certified Halal</h3>
+                                <p style={{ color: '#6b7280', fontWeight: '500' }}>Strict compliance with Islamic dietary laws. Verified at every step.</p>
+                            </div>
+                        </Card>
+                        <Card className="feature-card">
+                            <div style={{ padding: '3rem', textAlign: 'center' }}>
+                                <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><Award size={56} /></div>
+                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Premium Quality</h3>
+                                <p style={{ color: '#6b7280', fontWeight: '500' }}>Hand-picked from the best organic farms. No hormones/antibiotics.</p>
+                            </div>
+                        </Card>
+                        <Card className="feature-card">
+                            <div style={{ padding: '3rem', textAlign: 'center' }}>
+                                <div style={{ color: '#10b981', marginBottom: '1.5rem' }}><TrendingUp size={56} /></div>
+                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Community Focused</h3>
+                                <p style={{ color: '#6b7280', fontWeight: '500' }}>Empowering local farmers and delivery partners in your area.</p>
+                            </div>
+                        </Card>
+                    </div>
+                </section>
+            )}
 
             {/* Professional Contact Section - Transparent Curved Box */}
             <section style={{ marginBottom: '5rem', display: 'flex', justifyContent: 'center' }}>

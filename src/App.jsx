@@ -19,7 +19,7 @@ function App() {
     <Router>
       <Layout auth={auth}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage auth={auth} />} />
           <Route path="/work" element={<WorkPage />} />
 
           {/* Login Page receives the setter to update auth state */}

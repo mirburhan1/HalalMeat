@@ -26,15 +26,23 @@
     }
 }
 
-/* Mobile landscape and below */
+/* Mobile landscape and below (Fluid Range covering 768px down to 400px) */
 @media (max-width: 768px) {
 
-    /* Fix header alignment - stack vertically and center on mobile */
+    /* Header Scaling */
     .seller-dashboard .header-section {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 1.5rem !important;
+        gap: clamp(1rem, 3vw, 1.5rem) !important;
+    }
+
+    .seller-dashboard .header-section h1 {
+        font-size: clamp(1.35rem, 5vw, 2.5rem) !important;
+    }
+
+    .seller-dashboard .header-section p {
+        font-size: clamp(0.75rem, 3vw, 1rem) !important;
     }
 
     .seller-dashboard .header-section>div:first-child {
@@ -44,84 +52,83 @@
 
     .seller-dashboard .header-section button {
         width: 100%;
+        padding: clamp(0.6rem, 2vw, 0.9rem) !important;
+        font-size: clamp(0.9rem, 3vw, 1rem) !important;
     }
 
-    /* Table header responsive - center on mobile */
+    /* Table Header Scaling */
     .seller-dashboard .table-header {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
+        gap: 0.75rem !important;
+        padding: clamp(0.75rem, 3vw, 1.5rem) !important;
     }
 
     .seller-dashboard .table-header h3 {
         width: 100%;
+        font-size: clamp(1rem, 4vw, 1.25rem) !important;
     }
 
-    .seller-dashboard .table-wrapper {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .seller-dashboard .table-wrapper table {
-        min-width: 700px;
-    }
-
-    /* Force stat grid to single column */
+    /* Grid & Card Fluidity */
     .seller-dashboard [style*="repeat(auto-fit"] {
         grid-template-columns: 1fr !important;
-        gap: 0.75rem !important;
+        gap: clamp(0.5rem, 2vw, 1rem) !important;
     }
 
-    /* Make stat cards MUCH smaller on mobile */
     .seller-dashboard .stat-card {
-        min-height: 65px !important;
-        padding: 0.65rem !important;
-        gap: 0.65rem !important;
-        /* Ensure consistent glass styling */
+        /* Fluid height: shrinks from 80px down to 50px */
+        min-height: clamp(50px, 12vh, 80px) !important;
+        padding: clamp(0.6rem, 2vw, 1.25rem) !important;
+        gap: clamp(0.6rem, 2vw, 1.25rem) !important;
+
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
     }
 
     .seller-dashboard .stat-card>div:first-child {
-        width: 40px !important;
-        height: 40px !important;
+        width: clamp(34px, 8vw, 44px) !important;
+        height: clamp(34px, 8vw, 44px) !important;
     }
 
     .seller-dashboard .stat-card svg {
-        width: 20px !important;
-        height: 20px !important;
+        width: clamp(18px, 4.5vw, 22px) !important;
+        height: clamp(18px, 4.5vw, 22px) !important;
     }
 
+    /* Stat Card Content Fluidity */
     .seller-dashboard .stat-card h3 {
-        font-size: 1.25rem !important;
+        font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
     }
 
     .seller-dashboard .stat-card p {
-        font-size: 0.6rem !important;
-        text-transform: uppercase;
+        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
         letter-spacing: 0.05em;
     }
 
-    /* Table responsive styling */
+    /* Table Fluidity */
+    /* Ensure table text shrinks but stays readable */
     .seller-dashboard .table-wrapper table {
-        font-size: 0.85rem !important;
+        font-size: clamp(0.65rem, 2.5vw, 0.9rem) !important;
+        min-width: unset !important;
+        width: 100% !important;
+        /* Prevent forcing wide width */
     }
 
     .seller-dashboard .table-wrapper th,
     .seller-dashboard .table-wrapper td {
-        padding: 0.85rem 0.75rem !important;
+        padding: clamp(0.45rem, 2vw, 0.75rem) clamp(0.25rem, 1.5vw, 0.75rem) !important;
     }
 
-    /* Make action buttons smaller */
+    /* Action buttons scale */
     .seller-dashboard .table-wrapper button {
-        padding: 0.35rem 0.5rem !important;
+        padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.35rem, 1.5vw, 0.6rem) !important;
     }
 
     .seller-dashboard .table-wrapper button svg {
-        width: 16px !important;
-        height: 16px !important;
+        width: clamp(12px, 2.5vw, 16px) !important;
+        height: clamp(12px, 2.5vw, 16px) !important;
     }
 
     /* Ensure table card has same transparent glass style */
@@ -132,210 +139,11 @@
     }
 }
 
-/* Mobile portrait */
-@media (max-width: 640px) {
-    .seller-dashboard .stat-card {
-        min-height: 60px !important;
-        padding: 0.6rem !important;
-        gap: 0.6rem !important;
-    }
-
-    .seller-dashboard .stat-card>div:first-child {
-        width: 38px !important;
-        height: 38px !important;
-    }
-
-    .seller-dashboard .stat-card svg {
-        width: 19px !important;
-        height: 19px !important;
-    }
-
-    .seller-dashboard .stat-card h3 {
-        font-size: 1.2rem !important;
-    }
-
-    .seller-dashboard .stat-card p {
-        font-size: 0.58rem !important;
-    }
-
-    /* Compact table on small screens */
-    .seller-dashboard .table-wrapper table {
-        min-width: 550px !important;
-        font-size: 0.75rem !important;
-    }
-
-    .seller-dashboard .table-wrapper th,
-    .seller-dashboard .table-wrapper td {
-        padding: 0.7rem 0.5rem !important;
-    }
-
-    /* Smaller action buttons */
-    .seller-dashboard .table-wrapper button {
-        padding: 0.3rem 0.4rem !important;
-    }
-
-    .seller-dashboard .table-wrapper button svg {
-        width: 14px !important;
-        height: 14px !important;
-    }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-    .seller-dashboard .table-wrapper table {
-        font-size: 0.7rem !important;
-        min-width: 500px !important;
-    }
-
-    .seller-dashboard .table-wrapper th,
-    .seller-dashboard .table-wrapper td {
-        padding: 0.6rem 0.4rem !important;
-    }
-
-    /* Extra small action buttons */
-    .seller-dashboard .table-wrapper button {
-        padding: 0.25rem 0.35rem !important;
-    }
-
-    .seller-dashboard .table-wrapper button svg {
-        width: 13px !important;
-        height: 13px !important;
-    }
-
-    .seller-dashboard .stat-card {
-        min-height: 55px !important;
-        padding: 0.55rem !important;
-        gap: 0.55rem !important;
-    }
-
-    .seller-dashboard .stat-card>div:first-child {
-        width: 36px !important;
-        height: 36px !important;
-    }
-
-    .seller-dashboard .stat-card svg {
-        width: 18px !important;
-        height: 18px !important;
-    }
-
-    .seller-dashboard .stat-card h3 {
-        font-size: 1.15rem !important;
-    }
-
-    .seller-dashboard .stat-card p {
-        font-size: 0.52rem !important;
-    }
-
-    /* Further compress table header */
-    .seller-dashboard .table-header {
-        padding: 0.75rem !important;
-    }
-
-    .seller-dashboard .table-header h3 {
-        font-size: 1rem !important;
-    }
-}
-
-/* Extra small mobile (Redmi 11, Galaxy A series, etc.) */
-@media (max-width: 400px) {
-    .seller-dashboard .table-wrapper table {
-        font-size: 0.65rem !important;
-        min-width: 450px !important;
-    }
-
-    .seller-dashboard .table-wrapper th,
-    .seller-dashboard .table-wrapper td {
-        padding: 0.5rem 0.3rem !important;
-    }
-
-    /* Ultra small action buttons */
-    .seller-dashboard .table-wrapper button {
-        padding: 0.2rem 0.3rem !important;
-    }
-
-    .seller-dashboard .table-wrapper button svg {
-        width: 12px !important;
-        height: 12px !important;
-    }
-
-    .seller-dashboard .stat-card {
-        min-height: 50px !important;
-        padding: 0.5rem !important;
-        gap: 0.5rem !important;
-    }
-
-    .seller-dashboard .stat-card>div:first-child {
-        width: 34px !important;
-        height: 34px !important;
-    }
-
-    .seller-dashboard .stat-card svg {
-        width: 17px !important;
-        height: 17px !important;
-    }
-
-    .seller-dashboard .stat-card h3 {
-        font-size: 1.1rem !important;
-    }
-
-    .seller-dashboard .stat-card p {
-        font-size: 0.5rem !important;
-    }
-
-    .seller-dashboard .table-header {
-        padding: 0.65rem !important;
-    }
-
-    .seller-dashboard .table-header h3 {
-        font-size: 0.95rem !important;
-    }
-}
-
-/* Ultra small mobile (very small phones) */
+/* Edge Case: Ultra Small Mobile (≤ 360px) 
+   Just final safety adjustments if clamp() hits limits */
 @media (max-width: 360px) {
     .seller-dashboard .table-wrapper table {
-        font-size: 0.6rem !important;
-        min-width: 400px !important;
-    }
-
-    .seller-dashboard .table-wrapper th,
-    .seller-dashboard .table-wrapper td {
-        padding: 0.45rem 0.25rem !important;
-    }
-
-    .seller-dashboard .stat-card {
-        min-height: 48px !important;
-        padding: 0.45rem !important;
-        gap: 0.45rem !important;
-    }
-
-    .seller-dashboard .stat-card>div:first-child {
-        width: 32px !important;
-        height: 32px !important;
-    }
-
-    .seller-dashboard .stat-card svg {
-        width: 16px !important;
-        height: 16px !important;
-    }
-
-    .seller-dashboard .stat-card h3 {
-        font-size: 1.05rem !important;
-    }
-
-    .seller-dashboard .stat-card p {
-        font-size: 0.48rem !important;
-    }
-
-    .seller-dashboard .table-header h3 {
-        font-size: 0.9rem !important;
-    }
-
-    .seller-dashboard .header-section h1 {
-        font-size: 1.5rem !important;
-    }
-
-    .seller-dashboard .header-section p {
-        font-size: 0.8rem !important;
+        min-width: 350px !important;
+        /* Allow scroll only on extremely tiny devices */
     }
 }

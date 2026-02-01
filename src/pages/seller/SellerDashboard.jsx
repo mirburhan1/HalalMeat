@@ -48,9 +48,9 @@ export const SellerDashboard = () => {
         <div style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem' }}>
+            <div className="header-wrapper" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h1 style={{ fontSize: '2.5rem', color: '#111827', marginBottom: '0.25rem' }}>Seller Portal</h1>
+                    <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: '#111827', marginBottom: '0.25rem' }}>Seller Portal</h1>
                     <p style={{ color: '#6b7280' }}>Manage your shop and inventory</p>
                 </div>
                 <Button variant="primary" style={{ padding: '0.75rem 1.5rem' }}>
@@ -68,9 +68,9 @@ export const SellerDashboard = () => {
             {/* Inventory Table */}
             <Card style={{ overflow: 'hidden', padding: 0 }}>
                 <div style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6' }}>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Inventory Management</h3>
+                    <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Inventory Management</h3>
                 </div>
-                <div style={{ overflowX: 'auto' }}>
+                <div className="table-wrapper" style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
                         <thead style={{ background: '#f9fafb' }}>
                             <tr>
@@ -111,6 +111,33 @@ export const SellerDashboard = () => {
                     </table>
                 </div>
             </Card>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .header-wrapper {
+                        flex-direction: column;
+                        align-items: flex-start !important;
+                    }
+                    .header-wrapper button {
+                        width: 100%;
+                    }
+                    .table-wrapper {
+                        -webkit-overflow-scrolling: touch;
+                    }
+                    .table-wrapper table {
+                        min-width: 700px;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .table-wrapper table {
+                        font-size: 0.85rem !important;
+                    }
+                    .table-wrapper th,
+                    .table-wrapper td {
+                        padding: 0.75rem 0.5rem !important;
+                    }
+                }
+            `}</style>
 
         </div>
     );

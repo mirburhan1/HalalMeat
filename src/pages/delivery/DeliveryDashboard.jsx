@@ -58,11 +58,11 @@ export const DeliveryDashboard = () => {
             {/* Header & Controls */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                    <h1 style={{ fontSize: '2.5rem', color: '#111827', marginBottom: '0.25rem' }}>Delivery Portal</h1>
+                    <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: '#111827', marginBottom: '0.25rem' }}>Delivery Portal</h1>
                     <p style={{ color: '#6b7280' }}>Welcome back, Partner</p>
                 </div>
 
-                <Card style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0.75rem 1.5rem', borderRadius: '999px', minWidth: 'auto', width: 'auto' }}>
+                <Card className="status-card" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0.75rem 1.5rem', borderRadius: '999px', minWidth: 'auto', width: 'auto' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: isAvailable ? '#10b981' : '#ef4444' }}></div>
                         <span style={{ fontWeight: '600', color: isAvailable ? '#10b981' : '#ef4444' }}>{isAvailable ? 'Online' : 'Offline'}</span>
@@ -89,10 +89,10 @@ export const DeliveryDashboard = () => {
             {/* Admin Table - Deliveries */}
             <Card style={{ overflow: 'hidden', padding: 0 }}>
                 <div style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>Recent Deliveries</h3>
+                    <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Recent Deliveries</h3>
                     <Button variant="outline" style={{ fontSize: '0.85rem', padding: '0.4rem 1rem' }}>View All</Button>
                 </div>
-                <div style={{ overflowX: 'auto' }}>
+                <div className="table-wrapper" style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
                         <thead style={{ background: '#f9fafb' }}>
                             <tr>
@@ -127,6 +127,30 @@ export const DeliveryDashboard = () => {
                     </table>
                 </div>
             </Card>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .status-card {
+                        width: 100% !important;
+                        justify-content: space-between !important;
+                    }
+                    .table-wrapper {
+                        -webkit-overflow-scrolling: touch;
+                    }
+                    .table-wrapper table {
+                        min-width: 600px;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .table-wrapper table {
+                        font-size: 0.85rem !important;
+                    }
+                    .table-wrapper th,
+                    .table-wrapper td {
+                        padding: 0.75rem 0.5rem !important;
+                    }
+                }
+            `}</style>
 
         </div >
     );

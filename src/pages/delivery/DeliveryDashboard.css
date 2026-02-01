@@ -29,12 +29,20 @@
 /* Mobile landscape and below (Fluid Range covering 768px down to 400px) */
 @media (max-width: 768px) {
 
-    /* Fix header alignment - stack vertically and center on mobile */
+    /* Header Scaling - CENTERED like Seller Portal */
     .delivery-dashboard .header-section {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 1.5rem !important;
+        gap: clamp(1rem, 3vw, 1.5rem) !important;
+    }
+
+    .delivery-dashboard .header-section h1 {
+        font-size: clamp(1.35rem, 5vw, 2.5rem) !important;
+    }
+
+    .delivery-dashboard .header-section p {
+        font-size: clamp(0.75rem, 3vw, 1rem) !important;
     }
 
     .delivery-dashboard .header-section>div:first-child {
@@ -42,82 +50,90 @@
         width: 100%;
     }
 
+    /* Status Card - Delivery Specific, but fully responsive */
     .delivery-dashboard .status-card {
         width: 100% !important;
         justify-content: space-between !important;
-        padding: 0.6rem 1rem !important;
-        /* Ensure same transparent glass style */
+        padding: clamp(0.6rem, 2vw, 1rem) !important;
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
     }
 
-    /* Table header responsive - center on mobile */
+    /* Table Header Scaling - CENTERED like Seller Portal */
     .delivery-dashboard .table-header {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
+        gap: 0.75rem !important;
+        padding: clamp(0.75rem, 3vw, 1.5rem) !important;
     }
 
     .delivery-dashboard .table-header h3 {
         width: 100%;
+        font-size: clamp(1rem, 4vw, 1.25rem) !important;
     }
 
     .delivery-dashboard .table-header button {
         width: 100%;
-        font-size: 0.75rem !important;
-        padding: 0.35rem 0.75rem !important;
+        font-size: clamp(0.75rem, 3vw, 0.9rem) !important;
+        padding: clamp(0.35rem, 1.5vw, 0.5rem) !important;
     }
 
-    .delivery-dashboard .table-wrapper {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .delivery-dashboard .table-wrapper table {
-        min-width: 600px;
-    }
-
-    /* Grid & Card Fluidity */
+    /* Grid & Card Fluidity - Exact match to Seller Portal Response */
     .delivery-dashboard [style*="repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+        /* Force single column for consistent centered look */
         gap: clamp(0.5rem, 2vw, 1rem) !important;
     }
 
-    /* Make stat cards MUCH smaller on mobile */
+    /* Stat Cards - Fluid Height & Padding matching Seller Portal */
     .delivery-dashboard .stat-card {
-        min-height: 65px !important;
-        padding: 0.65rem !important;
-        gap: 0.65rem !important;
-        /* Ensure consistent glass styling */
+        min-height: clamp(50px, 12vh, 80px) !important;
+        padding: clamp(0.6rem, 2vw, 1.25rem) !important;
+        gap: clamp(0.6rem, 2vw, 1.25rem) !important;
+
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
     }
 
     .delivery-dashboard .stat-card>div:first-child {
-        width: 40px !important;
-        height: 40px !important;
+        width: clamp(34px, 8vw, 44px) !important;
+        height: clamp(34px, 8vw, 44px) !important;
     }
 
     .delivery-dashboard .stat-card svg {
-        width: 20px !important;
-        height: 20px !important;
+        width: clamp(18px, 4.5vw, 22px) !important;
+        height: clamp(18px, 4.5vw, 22px) !important;
     }
 
+    /* Stat Card Content Fluidity */
     .delivery-dashboard .stat-card h3 {
-        font-size: 1.25rem !important;
+        font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
     }
 
     .delivery-dashboard .stat-card p {
-        font-size: 0.6rem !important;
-        text-transform: uppercase;
+        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
         letter-spacing: 0.05em;
     }
 
     .delivery-dashboard .stat-card span {
-        font-size: 0.55rem !important;
-        padding: 0.15rem 0.35rem !important;
+        font-size: clamp(0.5rem, 2vw, 0.65rem) !important;
+        padding: clamp(0.1rem, 0.5vw, 0.2rem) clamp(0.25rem, 1vw, 0.4rem) !important;
+    }
+
+    /* Table Fluidity */
+    .delivery-dashboard .table-wrapper table {
+        font-size: clamp(0.65rem, 2.5vw, 0.9rem) !important;
+        min-width: unset !important;
+        width: 100% !important;
+        /* Prevent forcing wide width */
+    }
+
+    .delivery-dashboard .table-wrapper th,
+    .delivery-dashboard .table-wrapper td {
+        padding: clamp(0.45rem, 2vw, 0.75rem) clamp(0.25rem, 1.5vw, 0.75rem) !important;
     }
 
     /* Ensure table card has same transparent glass style */

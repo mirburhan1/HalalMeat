@@ -74,98 +74,18 @@
     /* Force stat grid to single column */
     .delivery-dashboard [style*="repeat(auto-fit"] {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 0.75rem !important;
     }
 
+    /* Make stat cards MUCH smaller on mobile */
     .delivery-dashboard .stat-card {
-        min-height: 85px !important;
-        padding: 0.85rem !important;
-        gap: 0.85rem !important;
+        min-height: 65px !important;
+        padding: 0.65rem !important;
+        gap: 0.65rem !important;
         /* Ensure consistent glass styling */
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-    }
-
-    .delivery-dashboard .stat-card>div:first-child {
-        width: 48px !important;
-        height: 48px !important;
-    }
-
-    .delivery-dashboard .stat-card svg {
-        width: 24px !important;
-        height: 24px !important;
-    }
-
-    .delivery-dashboard .stat-card h3 {
-        font-size: 1.4rem !important;
-    }
-
-    .delivery-dashboard .stat-card p {
-        font-size: 0.65rem !important;
-    }
-
-    /* Ensure table card has same transparent glass style */
-    .delivery-dashboard .table-card {
-        background: rgba(255, 255, 255, 0.5) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-    }
-}
-
-/* Mobile portrait */
-@media (max-width: 640px) {
-    .delivery-dashboard .stat-card {
-        min-height: 75px !important;
-        padding: 0.75rem !important;
-        gap: 0.75rem !important;
-    }
-
-    .delivery-dashboard .stat-card>div:first-child {
-        width: 44px !important;
-        height: 44px !important;
-    }
-
-    .delivery-dashboard .stat-card svg {
-        width: 22px !important;
-        height: 22px !important;
-    }
-
-    .delivery-dashboard .stat-card h3 {
-        font-size: 1.3rem !important;
-    }
-
-    .delivery-dashboard .stat-card p {
-        font-size: 0.6rem !important;
-    }
-
-    .delivery-dashboard .stat-card span {
-        font-size: 0.6rem !important;
-        padding: 0.15rem 0.4rem !important;
-    }
-
-    /* Compact table on small screens */
-    .delivery-dashboard .table-wrapper table {
-        min-width: 550px !important;
-    }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-    .delivery-dashboard .table-wrapper table {
-        font-size: 0.8rem !important;
-        min-width: 500px !important;
-    }
-
-    .delivery-dashboard .table-wrapper th,
-    .delivery-dashboard .table-wrapper td {
-        padding: 0.6rem 0.4rem !important;
-    }
-
-    .delivery-dashboard .stat-card {
-        min-height: 70px !important;
-        padding: 0.65rem !important;
-        gap: 0.65rem !important;
     }
 
     .delivery-dashboard .stat-card>div:first-child {
@@ -179,16 +99,105 @@
     }
 
     .delivery-dashboard .stat-card h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.25rem !important;
     }
 
     .delivery-dashboard .stat-card p {
-        font-size: 0.55rem !important;
+        font-size: 0.6rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     .delivery-dashboard .stat-card span {
         font-size: 0.55rem !important;
-        padding: 0.1rem 0.35rem !important;
+        padding: 0.15rem 0.35rem !important;
+    }
+
+    /* Ensure table card has same transparent glass style */
+    .delivery-dashboard .table-card {
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 640px) {
+    .delivery-dashboard .stat-card {
+        min-height: 60px !important;
+        padding: 0.6rem !important;
+        gap: 0.6rem !important;
+    }
+
+    .delivery-dashboard .stat-card>div:first-child {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .delivery-dashboard .stat-card svg {
+        width: 19px !important;
+        height: 19px !important;
+    }
+
+    .delivery-dashboard .stat-card h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .delivery-dashboard .stat-card p {
+        font-size: 0.58rem !important;
+    }
+
+    .delivery-dashboard .stat-card span {
+        font-size: 0.55rem !important;
+        padding: 0.12rem 0.35rem !important;
+    }
+
+    /* Compact table on small screens */
+    .delivery-dashboard .table-wrapper table {
+        min-width: 500px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .delivery-dashboard .table-wrapper table {
+        font-size: 0.75rem !important;
+        min-width: 450px !important;
+    }
+
+    .delivery-dashboard .table-wrapper th,
+    .delivery-dashboard .table-wrapper td {
+        padding: 0.5rem 0.35rem !important;
+    }
+
+    .delivery-dashboard .stat-card {
+        min-height: 55px !important;
+        padding: 0.55rem !important;
+        gap: 0.55rem !important;
+    }
+
+    .delivery-dashboard .stat-card>div:first-child {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .delivery-dashboard .stat-card svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .delivery-dashboard .stat-card h3 {
+        font-size: 1.15rem !important;
+    }
+
+    .delivery-dashboard .stat-card p {
+        font-size: 0.52rem !important;
+    }
+
+    .delivery-dashboard .stat-card span {
+        font-size: 0.5rem !important;
+        padding: 0.1rem 0.3rem !important;
     }
 
     /* Further compress table header */

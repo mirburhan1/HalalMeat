@@ -142,3 +142,105 @@ button {
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile-first base styles are already applied above */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .btn-3d {
+    font-size: 0.95rem;
+    padding: 0.85rem 1.75rem;
+  }
+
+  .card-3d {
+    border-radius: 20px;
+  }
+}
+
+/* Tablets (768px and up) */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav, show mobile */
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  .show-mobile {
+    display: block !important;
+  }
+
+  /* Adjust grid layouts for smaller screens */
+  [style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Stack flex containers */
+  [style*="display: flex"][style*="gap"] {
+    flex-direction: column !important;
+  }
+
+  /* Reduce padding on containers */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Medium devices (tablets, 992px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .card-3d:hover {
+    transform: translateY(-4px) scale(1.005);
+  }
+}
+
+/* Large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .card-3d:hover {
+    transform: none;
+  }
+
+  .card-3d:active {
+    transform: scale(0.98);
+  }
+
+  .btn-3d:hover {
+    transform: none;
+  }
+
+  .btn-3d:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Print styles */
+@media print {
+
+  .hidden-mobile,
+  .show-mobile,
+  nav,
+  button {
+    display: none !important;
+  }
+}

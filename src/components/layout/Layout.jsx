@@ -30,8 +30,8 @@ export const Layout = ({ children, auth }) => {
             flexDirection: 'column',
             position: 'relative',
             zIndex: 1,
-            padding: '2rem',
-            maxWidth: '1280px', /* Wider on big screens for "Apple" feel */
+            padding: 'clamp(1rem, 3vw, 2rem)',
+            maxWidth: '1280px',
             margin: '0 auto',
             width: '100%'
         }

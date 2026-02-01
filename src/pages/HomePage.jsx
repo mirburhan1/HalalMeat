@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, Award, TrendingUp, MapPin, Mail, Send, Utensils } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Award, TrendingUp, MapPin, Mail, Send, Utensils, Search, X } from 'lucide-react';
 import { BuyerRecommendations } from '../components/buyer/BuyerRecommendations';
+
+// Master Product List (Mock Data)
+const ALL_PRODUCTS = [
+    { id: 1, name: 'Premium Angus Ribeye', price: '$24.99', weight: '1lb', rating: 4.9, image: '🥩', tag: 'Best Seller', category: 'Beef' },
+    { id: 2, name: 'Organic Chicken Breast', price: '$12.99', weight: '2lb', rating: 4.8, image: '🍗', tag: 'Fresh', category: 'Chicken' },
+    { id: 3, name: 'Lamb Shoulder Chops', price: '$19.99', weight: '1.5lb', rating: 4.7, image: '🍖', tag: 'Discount', category: 'Lamb' },
+    { id: 4, name: 'Ground Beef (Lean)', price: '$9.99', weight: '1lb', rating: 4.6, image: '🍔', tag: 'Popular', category: 'Beef' },
+    { id: 5, name: 'Marinated Goat Cubes', price: '$22.50', weight: '1lb', rating: 4.9, image: '🥘', tag: 'New', category: 'Goat' },
+    { id: 6, name: 'Chicken Wings (Party Pack)', price: '$15.99', weight: '3lb', rating: 4.7, image: '🍗', tag: 'Value', category: 'Chicken' },
+    { id: 7, name: 'Veal Cutlets', price: '$26.00', weight: '1lb', rating: 4.8, image: '🥩', tag: 'Premium', category: 'Beef' },
+    { id: 8, name: 'Whole Chicken', price: '$14.50', weight: '4lb', rating: 4.9, image: '🐓', tag: 'Family', category: 'Chicken' },
+];
+
+const FILTER_CATEGORIES = ['All', 'Beef', 'Chicken', 'Lamb', 'Goat'];
 
 export const HomePage = ({ auth = { buyer: false } }) => {
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [activeFilter, setActiveFilter] = useState('All');
+
+    // Filter Logic
+    const filteredProducts = useMemo(() => {
+        return ALL_PRODUCTS.filter(product => {
+            const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesCategory = activeFilter === 'All' || product.category === activeFilter;
+            return matchesSearch && matchesCategory;
+        });
+    }, [searchTerm, activeFilter]);
+
+    // Dynamic Title Logic
+    const getSectionTitle = () => {
+        if (searchTerm) return `Search Results for "${searchTerm}"`;
+        if (activeFilter !== 'All') return `${activeFilter} Selection`;
+        return "Recommended For You";
+    };
 
     const CategoryIcon = ({ type }) => {
         let icon = <Utensils size={48} />;
@@ -25,7 +57,7 @@ export const HomePage = ({ auth = { buyer: false } }) => {
     };
 
     const CategoryCard = ({ title, sub }) => (
-        <Card className="category-card" onClick={() => navigate('/buyer')}>
+        <Card className="category-card" onClick={() => { setActiveFilter(title.includes('Beef') ? 'Beef' : title.includes('Chicken') ? 'Chicken' : title.includes('Lamb') ? 'Lamb' : 'Goat'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
             <div style={{ padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer' }}>
                 <CategoryIcon />
                 <h3 style={{ fontSize: '1.75rem', color: '#111827', fontWeight: '700', marginBottom: '0.5rem' }}>{title}</h3>
@@ -34,11 +66,14 @@ export const HomePage = ({ auth = { buyer: false } }) => {
         </Card>
     );
 
+    // Check if any user is logged in (including Seller/Delivery who are now buying)
+    const isLoggedIn = auth.buyer || auth.seller || auth.delivery;
+
     return (
         <div style={{ color: '#1f2937' }}>
 
-            {/* CONDITIONAL HEADER: Default Hero vs Buyer Welcome */}
-            {!auth.buyer ? (
+            {/* CONDITIONAL HEADER: Default Hero vs Unified Buying Experience */}
+            {!isLoggedIn ? (
                 /* Default Hero (Guest) */
                 <section style={{ textAlign: 'center', padding: '8rem 0 10rem' }}>
                     <h1 style={{
@@ -63,7 +98,7 @@ export const HomePage = ({ auth = { buyer: false } }) => {
                         Certified Zabiha Halal. Sourced from organic farms. Experience the difference in quality and purity.
                     </p>
                     <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Button variant="primary" onClick={() => navigate('/buyer')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
+                        <Button variant="primary" onClick={() => navigate('/login')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
                             Shop Now <ArrowRight size={24} style={{ marginLeft: '12px' }} />
                         </Button>
                         <Button variant="secondary" onClick={() => navigate('/work')} style={{ padding: '1.25rem 3.5rem', fontSize: '1.25rem' }}>
@@ -72,21 +107,98 @@ export const HomePage = ({ auth = { buyer: false } }) => {
                     </div>
                 </section>
             ) : (
-                /* Buyer Personalized Welcome (Logged In) */
+                /* Unified Buying View (Logged In) */
                 <div style={{ paddingTop: '8rem' }}>
-                    <section style={{ padding: '0 1rem 2rem 1rem', textAlign: 'center' }}>
-                        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
-                            Welcome back, <span style={{ color: '#10b981' }}>Burhan</span>!
-                        </h1>
-                        <p style={{ fontSize: '1.1rem', color: '#6b7280' }}>Ready to order fresh meat for your kitchen today?</p>
+
+                    {/* Search & Filter Section */}
+                    <section style={{ padding: '0 1rem 2rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
+
+                        {/* Welcome & Search */}
+                        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+                            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#111827', marginBottom: '1.5rem' }}>
+                                What are you cooking today?
+                            </h1>
+
+                            {/* Search Bar */}
+                            <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+                                <input
+                                    type="text"
+                                    placeholder="Search for steak, chicken, lamb..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    style={{
+                                        width: '100%',
+                                        padding: '1.2rem 1.2rem 1.2rem 3.5rem',
+                                        fontSize: '1.1rem',
+                                        borderRadius: '24px',
+                                        border: '1px solid rgba(0,0,0,0.1)',
+                                        background: 'rgba(255,255,255,0.8)',
+                                        backdropFilter: 'blur(12px)',
+                                        boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                                        outline: 'none',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                />
+                                <Search size={24} style={{ position: 'absolute', left: '1.2rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} />
+                                {searchTerm && (
+                                    <button
+                                        onClick={() => setSearchTerm('')}
+                                        style={{ position: 'absolute', right: '1.2rem', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: '#6b7280' }}
+                                    >
+                                        <X size={20} />
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Filter Chips */}
+                        <div className="no-scrollbar" style={{
+                            display: 'flex',
+                            gap: '1rem',
+                            overflowX: 'auto',
+                            padding: '0.5rem',
+                            justifyContent: 'center', /* Center on desktop, scroll on mobile */
+                            flexWrap: 'wrap'
+                        }}>
+                            {FILTER_CATEGORIES.map(cat => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setActiveFilter(cat)}
+                                    style={{
+                                        padding: '0.6rem 1.5rem',
+                                        borderRadius: '99px',
+                                        border: 'none',
+                                        background: activeFilter === cat ? '#10b981' : 'white',
+                                        color: activeFilter === cat ? 'white' : '#4b5563',
+                                        fontWeight: '600',
+                                        fontSize: '0.95rem',
+                                        cursor: 'pointer',
+                                        boxShadow: activeFilter === cat ? '0 4px 12px rgba(16, 185, 129, 0.3)' : '0 2px 8px rgba(0,0,0,0.05)',
+                                        transition: 'all 0.2s ease',
+                                        whiteSpace: 'nowrap'
+                                    }}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
                     </section>
 
-                    {/* New Recommendations Component */}
-                    <BuyerRecommendations />
+                    <style>{`
+                        @media (max-width: 640px) {
+                            .no-scrollbar {
+                                justify-content: flex-start !important; /* Allow scroll on small screens */
+                                flex-wrap: nowrap !important;
+                            }
+                        }
+                    `}</style>
+
+                    {/* Product Showcase */}
+                    <BuyerRecommendations products={filteredProducts} title={getSectionTitle()} />
                 </div>
             )}
 
-            {/* Categories Section (Always Visible) */}
+            {/* Categories Section (Always Visible - acts as quick filters now) */}
             <section style={{ marginBottom: '10rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Selection</span>
@@ -101,8 +213,8 @@ export const HomePage = ({ auth = { buyer: false } }) => {
                 </div>
             </section>
 
-            {/* Hide "Why Us" for buyers to reduce clutter, show only for guests */}
-            {!auth.buyer && (
+            {/* Hide "Why Us" when logged in to focus on buying */}
+            {!isLoggedIn && (
                 <section style={{ marginBottom: '10rem' }}>
                     <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                         <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Promise</span>

@@ -30,11 +30,9 @@ export const LoginPage = ({ setAuth }) => {
 
         let target = from;
 
-        // 2. If 'from' is missing, or we are at /login, or /, default to the Role's dashboard
+        // 2. If 'from' is missing, or we are at /login, or /, default to the Home Page for ALL roles
         if (!target || target === '/login' || target === '/') {
-            if (role === 'seller') target = '/seller-onboarding';
-            else if (role === 'delivery') target = '/delivery';
-            else target = '/';
+            target = '/';
         }
 
         navigate(target, { replace: true });

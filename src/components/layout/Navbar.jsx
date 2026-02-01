@@ -49,7 +49,7 @@ export const Navbar = ({ auth = { seller: false, delivery: false } }) => {
             backgroundColor: 'transparent', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
             borderBottom: 'none', padding: '1.25rem 0', transition: 'all 0.3s ease'
         }}>
-            <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(1rem, 5vw, 2.5rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
                 {/* Brand */}
                 <Link to="/" style={{ fontSize: '1.5rem', fontWeight: '800', textDecoration: 'none', color: '#111827', display: 'flex', alignItems: 'center', gap: '0.75rem', letterSpacing: '-0.03em' }}>

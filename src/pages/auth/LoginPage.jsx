@@ -43,7 +43,7 @@ export const LoginPage = ({ setAuth }) => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
             <Card className="login-card">
-                <div style={{ padding: '2.5rem', width: '100%', maxWidth: '400px' }}>
+                <div style={{ padding: 'clamp(1.5rem, 5vw, 2.5rem)', width: '100%', maxWidth: '400px' }}>
                     <h2 style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '2rem', color: '#1f2937' }}>
                         {role === 'seller' ? 'Seller Login' : role === 'delivery' ? 'Delivery Login' : 'Welcome Back'}
                     </h2>

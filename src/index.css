@@ -244,3 +244,133 @@ button {
     display: none !important;
   }
 }
+
+/* =================================================================
+   GLOBAL RESPONSIVE OVERRIDES (Universal Device Support)
+   Targeting: Redmi 11, Samsung A-series, iPhone SE, etc.
+   ================================================================= */
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 14px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  h4 {
+    font-size: 1rem !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+  }
+
+  /* Compact Buttons Globally */
+  .btn-3d {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Compact Cards Globally */
+  .card-3d {
+    padding: 1rem !important;
+    border-radius: 20px !important;
+  }
+}
+
+/* Extra Small Mobile (≤ 400px) - Redmi 11 zone */
+@media (max-width: 400px) {
+  :root {
+    --font-size-base: 13px;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.35rem !important;
+  }
+
+  h2 {
+    font-size: 1.15rem !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
+
+  /* Tighter layout */
+  .container,
+  .wrap,
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Even smaller buttons */
+  .btn-3d {
+    padding: 0.6rem 1.25rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Force all flex grids to 1 column */
+  [style*="display: grid"],
+  [style*="display: flex"][style*="flex-wrap: wrap"] {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Ultra Small Mobile (≤ 360px) - iPhone SE 1st gen / Old Androids */
+@media (max-width: 360px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    /* Prevention */
+  }
+
+  h1 {
+    font-size: 1.25rem !important;
+  }
+
+  h2 {
+    font-size: 1.1rem !important;
+  }
+
+  p {
+    font-size: 0.85rem !important;
+  }
+
+  .btn-3d {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+    width: 100%;
+    /* Full width buttons usually better here */
+  }
+
+  /* Collapse all excessive padding */
+  div[style*="padding: 2rem"],
+  div[style*="padding: 3rem"] {
+    padding: 1.5rem !important;
+  }
+
+  div[style*="padding: 1.5rem"] {
+    padding: 1rem !important;
+  }
+}

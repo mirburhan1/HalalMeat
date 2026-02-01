@@ -57,7 +57,7 @@ export const DeliveryDashboard = () => {
         <div className="delivery-dashboard" style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
             {/* Header & Controls */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div className="header-section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
                     <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: '#111827', marginBottom: '0.25rem' }}>Delivery Portal</h1>
                     <p style={{ color: '#6b7280' }}>Welcome back, Partner</p>
@@ -89,7 +89,7 @@ export const DeliveryDashboard = () => {
 
             {/* Admin Table - Deliveries */}
             <Card style={{ overflow: 'hidden', padding: 0 }}>
-                <div style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="table-header" style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Recent Deliveries</h3>
                     <Button variant="outline" style={{ fontSize: '0.85rem', padding: '0.4rem 1rem' }}>View All</Button>
                 </div>

@@ -20,10 +20,32 @@
 
 /* Mobile landscape and below */
 @media (max-width: 768px) {
+
+    /* Fix header alignment - stack vertically */
+    .delivery-dashboard .header-section {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.5rem !important;
+    }
+
     .delivery-dashboard .status-card {
         width: 100% !important;
         justify-content: space-between !important;
         padding: 0.6rem 1rem !important;
+    }
+
+    /* Table header responsive */
+    .delivery-dashboard .table-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+    }
+
+    .delivery-dashboard .table-header button {
+        width: 100%;
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.75rem !important;
     }
 
     .delivery-dashboard .table-wrapper {
@@ -95,17 +117,23 @@
         font-size: 0.6rem !important;
         padding: 0.15rem 0.4rem !important;
     }
+
+    /* Compact table on small screens */
+    .delivery-dashboard .table-wrapper table {
+        min-width: 550px !important;
+    }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
     .delivery-dashboard .table-wrapper table {
-        font-size: 0.85rem !important;
+        font-size: 0.8rem !important;
+        min-width: 500px !important;
     }
 
     .delivery-dashboard .table-wrapper th,
     .delivery-dashboard .table-wrapper td {
-        padding: 0.75rem 0.5rem !important;
+        padding: 0.6rem 0.4rem !important;
     }
 
     .delivery-dashboard .stat-card {
@@ -135,5 +163,19 @@
     .delivery-dashboard .stat-card span {
         font-size: 0.55rem !important;
         padding: 0.1rem 0.35rem !important;
+    }
+
+    /* Further compress table header */
+    .delivery-dashboard .table-header {
+        padding: 0.75rem !important;
+    }
+
+    .delivery-dashboard .table-header h3 {
+        font-size: 1rem !important;
+    }
+
+    .delivery-dashboard .table-header button {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.6rem !important;
     }
 }

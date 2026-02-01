@@ -128,12 +128,12 @@ export const HomePage = () => {
                     backdropFilter: 'blur(20px)',
                     border: '1px solid rgba(255,255,255,0.3)'
                 }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '500px', '@media (max-width: 900px)': { gridTemplateColumns: '1fr' } }}>
+                    <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', minHeight: '500px' }}>
 
                         {/* Contact Info & Form */}
-                        <div style={{ padding: '3rem 4rem' }}>
+                        <div style={{ padding: 'clamp(2rem, 4vw, 4rem)' }}>
                             <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Contact Us</span>
-                            <h2 style={{ fontSize: '2.5rem', color: '#111827', marginTop: '0.5rem', marginBottom: '2rem' }}>Get in Touch</h2>
+                            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#111827', marginTop: '0.5rem', marginBottom: '2rem' }}>Get in Touch</h2>
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
                                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -162,18 +162,30 @@ export const HomePage = () => {
                         </div>
 
                         {/* Map of Srinagar */}
-                        <div style={{ position: 'relative', height: '100%', minHeight: '400px' }}>
+                        <div className="map-container" style={{ position: 'relative', height: '100%', minHeight: '400px', width: '100%' }}>
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105627.85966468452!2d74.7210219665671!3d34.10657159742411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1855686e3c5ef%3A0x66244b7cc1e305c6!2sSrinagar!5e0!3m2!1sen!2sin!4v1706822200000!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
-                                style={{ border: 0, opacity: 0.85 }}
+                                style={{ border: 0, opacity: 0.85, borderRadius: '0 32px 32px 0' }}
                                 allowFullScreen=""
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                             ></iframe>
                         </div>
                     </div>
+
+                    <style>{`
+                        @media (max-width: 900px) {
+                            .contact-grid {
+                                grid-template-columns: 1fr !important;
+                            }
+                            .map-container iframe {
+                                border-radius: 0 0 32px 32px !important;
+                                min-height: 350px;
+                            }
+                        }
+                    `}</style>
                 </Card>
             </section>
 

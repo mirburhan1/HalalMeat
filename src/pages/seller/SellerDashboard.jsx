@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Plus, Package, DollarSign, Archive, Edit2, Trash2 } from 'lucide-react';
+import './SellerDashboard.css';
 
 export const SellerDashboard = () => {
     const [products] = useState([
@@ -14,7 +15,7 @@ export const SellerDashboard = () => {
     /* "Same layout system" -> Matching DeliveryDashboard alignment strictly */
     /* "Border has half color... shadow not fully colored" -> Switched to full border + colored shadow glow */
     const StatCard = ({ title, value, icon: Icon, color }) => (
-        <Card style={{
+        <Card className="stat-card" style={{
             height: '100%',
             minHeight: '140px',
             padding: '1.5rem',
@@ -45,10 +46,10 @@ export const SellerDashboard = () => {
     );
 
     return (
-        <div style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
+        <div className="seller-dashboard" style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
             {/* Header */}
-            <div className="header-wrapper" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div className="header-section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
                     <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: '#111827', marginBottom: '0.25rem' }}>Seller Portal</h1>
                     <p style={{ color: '#6b7280' }}>Manage your shop and inventory</p>
@@ -66,8 +67,8 @@ export const SellerDashboard = () => {
             </div>
 
             {/* Inventory Table */}
-            <Card style={{ overflow: 'hidden', padding: 0 }}>
-                <div style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6' }}>
+            <Card className="table-card" style={{ overflow: 'hidden', padding: 0 }}>
+                <div className="table-header" style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6' }}>
                     <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Inventory Management</h3>
                 </div>
                 <div className="table-wrapper" style={{ overflowX: 'auto' }}>

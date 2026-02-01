@@ -1,0 +1,184 @@
+/* Responsive overrides for Seller Dashboard */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .seller-dashboard .stat-card {
+        min-height: 100px !important;
+        padding: 1rem !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+/* Mobile landscape and below */
+@media (max-width: 768px) {
+
+    /* Fix header alignment - stack vertically and center on mobile */
+    .seller-dashboard .header-section {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+
+    .seller-dashboard .header-section>div:first-child {
+        text-align: center;
+        width: 100%;
+    }
+
+    .seller-dashboard .header-section button {
+        width: 100%;
+    }
+
+    /* Table header responsive - center on mobile */
+    .seller-dashboard .table-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+    }
+
+    .seller-dashboard .table-header h3 {
+        width: 100%;
+    }
+
+    .seller-dashboard .table-wrapper {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .seller-dashboard .table-wrapper table {
+        min-width: 700px;
+    }
+
+    /* Force stat grid to single column */
+    .seller-dashboard [style*="repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    /* Make stat cards MUCH smaller on mobile */
+    .seller-dashboard .stat-card {
+        min-height: 65px !important;
+        padding: 0.65rem !important;
+        gap: 0.65rem !important;
+        /* Ensure consistent glass styling */
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .seller-dashboard .stat-card h3 {
+        font-size: 1.25rem !important;
+    }
+
+    .seller-dashboard .stat-card p {
+        font-size: 0.6rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Ensure table card has same transparent glass style */
+    .seller-dashboard .table-card {
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 640px) {
+    .seller-dashboard .stat-card {
+        min-height: 60px !important;
+        padding: 0.6rem !important;
+        gap: 0.6rem !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 19px !important;
+        height: 19px !important;
+    }
+
+    .seller-dashboard .stat-card h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .seller-dashboard .stat-card p {
+        font-size: 0.58rem !important;
+    }
+
+    /* Compact table on small screens */
+    .seller-dashboard .table-wrapper table {
+        min-width: 600px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .seller-dashboard .table-wrapper table {
+        font-size: 0.75rem !important;
+        min-width: 550px !important;
+    }
+
+    .seller-dashboard .table-wrapper th,
+    .seller-dashboard .table-wrapper td {
+        padding: 0.5rem 0.35rem !important;
+    }
+
+    .seller-dashboard .stat-card {
+        min-height: 55px !important;
+        padding: 0.55rem !important;
+        gap: 0.55rem !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .seller-dashboard .stat-card h3 {
+        font-size: 1.15rem !important;
+    }
+
+    .seller-dashboard .stat-card p {
+        font-size: 0.52rem !important;
+    }
+
+    /* Further compress table header */
+    .seller-dashboard .table-header {
+        padding: 0.75rem !important;
+    }
+
+    .seller-dashboard .table-header h3 {
+        font-size: 1rem !important;
+    }
+}

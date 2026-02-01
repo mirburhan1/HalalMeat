@@ -7,6 +7,7 @@ import { LoginPage } from './pages/auth/LoginPage';
 import { SellerDashboard } from './pages/seller/SellerDashboard';
 import { BuyerDashboard } from './pages/buyer/BuyerDashboard';
 import { DeliveryDashboard } from './pages/delivery/DeliveryDashboard';
+import { BuyPage } from './pages/BuyPage';
 
 import { SellerOnboarding } from './pages/seller/SellerOnboarding';
 
@@ -37,6 +38,7 @@ function App() {
           />
 
           <Route path="/buyer" element={<BuyerDashboard isLoggedIn={auth.buyer} />} />
+          <Route path="/buy" element={auth.buyer || auth.seller || auth.delivery ? <BuyPage /> : <Navigate to="/login" state={{ from: { pathname: '/buy' } }} replace />} />
 
           {/* Delivery Flow: Simple Login -> Dashboard */}
           <Route

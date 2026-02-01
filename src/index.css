@@ -8,8 +8,11 @@
   --color-primary-dark: #059669;
   --color-accent: #ecfdf5;
 
-  --color-text: #111827;
-  --color-text-muted: #374151;
+  /* Increased contrast for better visibility */
+  --color-text: #0f172a;
+  /* Slate 900 (Previous #111827) */
+  --color-text-muted: #334155;
+  /* Slate 700 (Previous #374151) */
   --color-white: #ffffff;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;

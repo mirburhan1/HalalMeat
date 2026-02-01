@@ -79,10 +79,9 @@
         min-width: 600px;
     }
 
-    /* Force stat grid to single column */
+    /* Grid & Card Fluidity */
     .delivery-dashboard [style*="repeat(auto-fit"] {
-        grid-template-columns: 1fr !important;
-        gap: 0.75rem !important;
+        gap: clamp(0.5rem, 2vw, 1rem) !important;
     }
 
     /* Make stat cards MUCH smaller on mobile */

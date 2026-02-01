@@ -96,6 +96,26 @@
         letter-spacing: 0.05em;
     }
 
+    /* Table responsive styling */
+    .seller-dashboard .table-wrapper table {
+        font-size: 0.85rem !important;
+    }
+
+    .seller-dashboard .table-wrapper th,
+    .seller-dashboard .table-wrapper td {
+        padding: 0.85rem 0.75rem !important;
+    }
+
+    /* Make action buttons smaller */
+    .seller-dashboard .table-wrapper button {
+        padding: 0.35rem 0.5rem !important;
+    }
+
+    .seller-dashboard .table-wrapper button svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
     /* Ensure table card has same transparent glass style */
     .seller-dashboard .table-card {
         background: rgba(255, 255, 255, 0.5) !important;
@@ -132,21 +152,46 @@
 
     /* Compact table on small screens */
     .seller-dashboard .table-wrapper table {
-        min-width: 600px !important;
-        font-size: 0.8rem !important;
+        min-width: 550px !important;
+        font-size: 0.75rem !important;
+    }
+
+    .seller-dashboard .table-wrapper th,
+    .seller-dashboard .table-wrapper td {
+        padding: 0.7rem 0.5rem !important;
+    }
+
+    /* Smaller action buttons */
+    .seller-dashboard .table-wrapper button {
+        padding: 0.3rem 0.4rem !important;
+    }
+
+    .seller-dashboard .table-wrapper button svg {
+        width: 14px !important;
+        height: 14px !important;
     }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
     .seller-dashboard .table-wrapper table {
-        font-size: 0.75rem !important;
-        min-width: 550px !important;
+        font-size: 0.7rem !important;
+        min-width: 500px !important;
     }
 
     .seller-dashboard .table-wrapper th,
     .seller-dashboard .table-wrapper td {
-        padding: 0.5rem 0.35rem !important;
+        padding: 0.6rem 0.4rem !important;
+    }
+
+    /* Extra small action buttons */
+    .seller-dashboard .table-wrapper button {
+        padding: 0.25rem 0.35rem !important;
+    }
+
+    .seller-dashboard .table-wrapper button svg {
+        width: 13px !important;
+        height: 13px !important;
     }
 
     .seller-dashboard .stat-card {

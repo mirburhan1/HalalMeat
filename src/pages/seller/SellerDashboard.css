@@ -227,3 +227,107 @@
         font-size: 1rem !important;
     }
 }
+
+/* Extra small mobile (Redmi 11, Galaxy A series, etc.) */
+@media (max-width: 400px) {
+    .seller-dashboard .table-wrapper table {
+        font-size: 0.65rem !important;
+        min-width: 450px !important;
+    }
+
+    .seller-dashboard .table-wrapper th,
+    .seller-dashboard .table-wrapper td {
+        padding: 0.5rem 0.3rem !important;
+    }
+
+    /* Ultra small action buttons */
+    .seller-dashboard .table-wrapper button {
+        padding: 0.2rem 0.3rem !important;
+    }
+
+    .seller-dashboard .table-wrapper button svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    .seller-dashboard .stat-card {
+        min-height: 50px !important;
+        padding: 0.5rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    .seller-dashboard .stat-card h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .seller-dashboard .stat-card p {
+        font-size: 0.5rem !important;
+    }
+
+    .seller-dashboard .table-header {
+        padding: 0.65rem !important;
+    }
+
+    .seller-dashboard .table-header h3 {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Ultra small mobile (very small phones) */
+@media (max-width: 360px) {
+    .seller-dashboard .table-wrapper table {
+        font-size: 0.6rem !important;
+        min-width: 400px !important;
+    }
+
+    .seller-dashboard .table-wrapper th,
+    .seller-dashboard .table-wrapper td {
+        padding: 0.45rem 0.25rem !important;
+    }
+
+    .seller-dashboard .stat-card {
+        min-height: 48px !important;
+        padding: 0.45rem !important;
+        gap: 0.45rem !important;
+    }
+
+    .seller-dashboard .stat-card>div:first-child {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .seller-dashboard .stat-card svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .seller-dashboard .stat-card h3 {
+        font-size: 1.05rem !important;
+    }
+
+    .seller-dashboard .stat-card p {
+        font-size: 0.48rem !important;
+    }
+
+    .seller-dashboard .table-header h3 {
+        font-size: 0.9rem !important;
+    }
+
+    .seller-dashboard .header-section h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .seller-dashboard .header-section p {
+        font-size: 0.8rem !important;
+    }
+}

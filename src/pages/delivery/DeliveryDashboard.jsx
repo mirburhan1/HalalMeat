@@ -88,7 +88,7 @@ export const DeliveryDashboard = () => {
             </div>
 
             {/* Admin Table - Deliveries */}
-            <Card style={{ overflow: 'hidden', padding: 0 }}>
+            <Card className="table-card" style={{ overflow: 'hidden', padding: 0 }}>
                 <div className="table-header" style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Recent Deliveries</h3>
                     <Button variant="outline" style={{ fontSize: '0.85rem', padding: '0.4rem 1rem' }}>View All</Button>

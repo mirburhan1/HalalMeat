@@ -21,25 +21,40 @@
 /* Mobile landscape and below */
 @media (max-width: 768px) {
 
-    /* Fix header alignment - stack vertically */
+    /* Fix header alignment - stack vertically and center on mobile */
     .delivery-dashboard .header-section {
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: center !important;
+        text-align: center !important;
         gap: 1.5rem !important;
+    }
+
+    .delivery-dashboard .header-section>div:first-child {
+        text-align: center;
+        width: 100%;
     }
 
     .delivery-dashboard .status-card {
         width: 100% !important;
         justify-content: space-between !important;
         padding: 0.6rem 1rem !important;
+        /* Ensure same transparent glass style */
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 
-    /* Table header responsive */
+    /* Table header responsive - center on mobile */
     .delivery-dashboard .table-header {
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: center !important;
+        text-align: center !important;
         gap: 1rem !important;
         padding: 1rem !important;
+    }
+
+    .delivery-dashboard .table-header h3 {
+        width: 100%;
     }
 
     .delivery-dashboard .table-header button {
@@ -66,6 +81,10 @@
         min-height: 85px !important;
         padding: 0.85rem !important;
         gap: 0.85rem !important;
+        /* Ensure consistent glass styling */
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 
     .delivery-dashboard .stat-card>div:first-child {
@@ -84,6 +103,13 @@
 
     .delivery-dashboard .stat-card p {
         font-size: 0.65rem !important;
+    }
+
+    /* Ensure table card has same transparent glass style */
+    .delivery-dashboard .table-card {
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 }
 

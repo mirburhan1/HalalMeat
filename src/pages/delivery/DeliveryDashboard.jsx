@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Clock, MapPin, DollarSign, Package, CheckCircle2, XCircle, TrendingUp } from 'lucide-react';
+import './DeliveryDashboard.css';
 
 export const DeliveryDashboard = () => {
     const [isAvailable, setIsAvailable] = useState(false);
@@ -18,7 +19,7 @@ export const DeliveryDashboard = () => {
 
     /* "Border has half color... shadow not fully colored" -> Switched to full border + colored shadow glow */
     const StatCard = ({ title, value, icon: Icon, color, trend }) => (
-        <Card style={{
+        <Card className="stat-card" style={{
             height: '100%',
             minHeight: '140px',
             padding: '1.5rem',
@@ -53,7 +54,7 @@ export const DeliveryDashboard = () => {
     );
 
     return (
-        <div style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
+        <div className="delivery-dashboard" style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
             {/* Header & Controls */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>

@@ -113,32 +113,7 @@ export const SellerDashboard = () => {
                 </div>
             </Card>
 
-            <style>{`
-                @media (max-width: 768px) {
-                    .header-wrapper {
-                        flex-direction: column;
-                        align-items: flex-start !important;
-                    }
-                    .header-wrapper button {
-                        width: 100%;
-                    }
-                    .table-wrapper {
-                        -webkit-overflow-scrolling: touch;
-                    }
-                    .table-wrapper table {
-                        min-width: 700px;
-                    }
-                }
-                @media (max-width: 480px) {
-                    .table-wrapper table {
-                        font-size: 0.85rem !important;
-                    }
-                    .table-wrapper th,
-                    .table-wrapper td {
-                        padding: 0.75rem 0.5rem !important;
-                    }
-                }
-            `}</style>
+
 
         </div>
     );

@@ -129,29 +129,7 @@ export const DeliveryDashboard = () => {
                 </div>
             </Card>
 
-            <style>{`
-                @media (max-width: 768px) {
-                    .status-card {
-                        width: 100% !important;
-                        justify-content: space-between !important;
-                    }
-                    .table-wrapper {
-                        -webkit-overflow-scrolling: touch;
-                    }
-                    .table-wrapper table {
-                        min-width: 600px;
-                    }
-                }
-                @media (max-width: 480px) {
-                    .table-wrapper table {
-                        font-size: 0.85rem !important;
-                    }
-                    .table-wrapper th,
-                    .table-wrapper td {
-                        padding: 0.75rem 0.5rem !important;
-                    }
-                }
-            `}</style>
+
 
         </div >
     );

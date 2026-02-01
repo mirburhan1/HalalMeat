@@ -1,24 +1,32 @@
-/* Responsive overrides for Delivery Dashboard */
+/* =================================================================
+   FLUID RESPONSIVE OVERRIDES (Delivery Dashboard)
+   Uses clamp() and viewport units for seamless shrinking
+   ================================================================= */
 
-/* Tablet and below */
+/* Tablet and below - Fluid Start */
 @media (max-width: 1024px) {
     .delivery-dashboard .stat-card {
-        min-height: 100px !important;
-        padding: 1rem !important;
+        min-height: clamp(80px, 15vw, 140px) !important;
+        padding: clamp(0.75rem, 2vw, 1.5rem) !important;
+        gap: clamp(0.5rem, 1.5vw, 1.25rem) !important;
     }
 
     .delivery-dashboard .stat-card>div:first-child {
-        width: 52px !important;
-        height: 52px !important;
+        width: clamp(40px, 8vw, 64px) !important;
+        height: clamp(40px, 8vw, 64px) !important;
     }
 
     .delivery-dashboard .stat-card svg {
-        width: 28px !important;
-        height: 28px !important;
+        width: clamp(20px, 4vw, 32px) !important;
+        height: clamp(20px, 4vw, 32px) !important;
+    }
+
+    .delivery-dashboard .stat-card h3 {
+        font-size: clamp(1.25rem, 4vw, 1.9rem) !important;
     }
 }
 
-/* Mobile landscape and below */
+/* Mobile landscape and below (Fluid Range covering 768px down to 400px) */
 @media (max-width: 768px) {
 
     /* Fix header alignment - stack vertically and center on mobile */

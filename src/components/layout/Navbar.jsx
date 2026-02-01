@@ -137,9 +137,30 @@ export const Navbar = ({ auth = { seller: false, delivery: false } }) => {
                             {link.name}
                         </Link>
                     ))}
-                    <Link to="/login" onClick={() => setIsOpen(false)}>
-                        <Button variant="primary" style={{ width: '100%', padding: '1.25rem' }}>Sign In</Button>
-                    </Link>
+
+                    {/* Mobile Admin Links */}
+                    {auth.seller && (
+                        <Link to="/seller" onClick={() => setIsOpen(false)} style={{ textDecoration: 'none' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', padding: '1rem', background: '#ecfdf5', borderRadius: '12px', color: '#047857' }}>
+                                <Store size={24} />
+                                <span style={{ fontWeight: '700', fontSize: '1.1rem' }}>Seller Admin</span>
+                            </div>
+                        </Link>
+                    )}
+                    {auth.delivery && (
+                        <Link to="/delivery" onClick={() => setIsOpen(false)} style={{ textDecoration: 'none' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', padding: '1rem', background: '#fffbeb', borderRadius: '12px', color: '#b45309' }}>
+                                <Truck size={24} />
+                                <span style={{ fontWeight: '700', fontSize: '1.1rem' }}>Delivery Admin</span>
+                            </div>
+                        </Link>
+                    )}
+
+                    {!auth.seller && !auth.delivery && (
+                        <Link to="/login" onClick={() => setIsOpen(false)}>
+                            <Button variant="primary" style={{ width: '100%', padding: '1.25rem' }}>Sign In</Button>
+                        </Link>
+                    )}
                 </div>
             )}
         </nav>

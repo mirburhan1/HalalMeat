@@ -57,7 +57,7 @@ export const DeliveryDashboard = () => {
     );
 
     return (
-     <>
+        <>
             <div className="delivery-dashboard" style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
                 {/* Header & Controls */}
@@ -98,71 +98,72 @@ export const DeliveryDashboard = () => {
                             </Button>
                         </Card>
                     </div>
-
-
-                    {/* Stats Grid */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-                        <StatCard title="Today's Earnings" value="$46.00" icon={DollarSign} color="#10b981" trend="+12%" />
-                        <StatCard title="Completed Trips" value="3" icon={CheckCircle2} color="#3b82f6" />
-                        <StatCard title="Total Hours" value="4.5 hrs" icon={Clock} color="#f59e0b" />
-                        <StatCard title="Rating" value="4.9" icon={TrendingUp} color="#8b5cf6" />
-                    </div>
-
-                    {/* Admin Table - Deliveries */}
-                    <Card className="table-card" style={{ overflow: 'hidden', padding: 0 }}>
-                        <div className="table-header" style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Recent Deliveries</h3>
-                            <Button variant="outline" style={{ fontSize: '0.85rem', padding: '0.4rem 1rem' }}>View All</Button>
-                        </div>
-                        <div className="table-wrapper" style={{ overflowX: 'auto' }}>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
-                                <thead style={{ background: '#f9fafb' }}>
-                                    <tr>
-                                        <th style={{ padding: '1rem 1.5rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Order ID</th>
-                                        <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Time</th>
-                                        <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Pickup</th>
-                                        <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Dropoff</th>
-                                        <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Earnings</th>
-                                        <th style={{ padding: '1rem 1.5rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {deliveries.map((item, index) => (
-                                        <tr key={item.id} style={{ borderBottom: index !== deliveries.length - 1 ? '1px solid #f3f4f6' : 'none' }}>
-                                            <td style={{ padding: '1rem 1.5rem', fontWeight: '600', color: '#111827' }}>{item.id}</td>
-                                            <td style={{ padding: '1rem', color: '#6b7280' }}>{item.time}</td>
-                                            <td style={{ padding: '1rem', color: '#374151' }}>{item.pickup}</td>
-                                            <td style={{ padding: '1rem', color: '#374151' }}>{item.dropoff}</td>
-                                            <td style={{ padding: '1rem', fontWeight: '600', color: '#10b981' }}>{item.amount}</td>
-                                            <td style={{ padding: '1rem 1.5rem' }}>
-                                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                                    <span style={{
-                                                        padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.85rem', fontWeight: '500',
-                                                        background: item.status === 'Completed' ? '#ecfdf5' : item.status === 'In Progress' ? '#eff6ff' : '#fff7ed',
-                                                        color: item.status === 'Completed' ? '#047857' : item.status === 'In Progress' ? '#1d4ed8' : '#c2410c'
-                                                    }}>
-                                                        {item.status}
-                                                    </span>
-                                                    <Button
-                                                        variant="outline"
-                                                        onClick={() => setSelectedOrder(item)}
-                                                        style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}
-                                                    >
-                                                        <Map size={14} /> Map
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </Card>
-
-
-
                 </div>
-                {selectedOrder && <OrderDetailsModal order={selectedOrder} onClose={() => setSelectedOrder(null)} />}
-            </>
-            );
+
+
+                {/* Stats Grid */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+                    <StatCard title="Today's Earnings" value="$46.00" icon={DollarSign} color="#10b981" trend="+12%" />
+                    <StatCard title="Completed Trips" value="3" icon={CheckCircle2} color="#3b82f6" />
+                    <StatCard title="Total Hours" value="4.5 hrs" icon={Clock} color="#f59e0b" />
+                    <StatCard title="Rating" value="4.9" icon={TrendingUp} color="#8b5cf6" />
+                </div>
+
+                {/* Admin Table - Deliveries */}
+                <Card className="table-card" style={{ overflow: 'hidden', padding: 0 }}>
+                    <div className="table-header" style={{ padding: '1.5rem', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <h3 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 'bold' }}>Recent Deliveries</h3>
+                        <Button variant="outline" style={{ fontSize: '0.85rem', padding: '0.4rem 1rem' }}>View All</Button>
+                    </div>
+                    <div className="table-wrapper" style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+                            <thead style={{ background: '#f9fafb' }}>
+                                <tr>
+                                    <th style={{ padding: '1rem 1.5rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Order ID</th>
+                                    <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Time</th>
+                                    <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Pickup</th>
+                                    <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Dropoff</th>
+                                    <th style={{ padding: '1rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Earnings</th>
+                                    <th style={{ padding: '1rem 1.5rem', textAlign: 'left', color: '#6b7280', fontWeight: '600' }}>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {deliveries.map((item, index) => (
+                                    <tr key={item.id} style={{ borderBottom: index !== deliveries.length - 1 ? '1px solid #f3f4f6' : 'none' }}>
+                                        <td style={{ padding: '1rem 1.5rem', fontWeight: '600', color: '#111827' }}>{item.id}</td>
+                                        <td style={{ padding: '1rem', color: '#6b7280' }}>{item.time}</td>
+                                        <td style={{ padding: '1rem', color: '#374151' }}>{item.pickup}</td>
+                                        <td style={{ padding: '1rem', color: '#374151' }}>{item.dropoff}</td>
+                                        <td style={{ padding: '1rem', fontWeight: '600', color: '#10b981' }}>{item.amount}</td>
+                                        <td style={{ padding: '1rem 1.5rem' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                                <span style={{
+                                                    padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.85rem', fontWeight: '500',
+                                                    background: item.status === 'Completed' ? '#ecfdf5' : item.status === 'In Progress' ? '#eff6ff' : '#fff7ed',
+                                                    color: item.status === 'Completed' ? '#047857' : item.status === 'In Progress' ? '#1d4ed8' : '#c2410c'
+                                                }}>
+                                                    {item.status}
+                                                </span>
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() => setSelectedOrder(item)}
+                                                    style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}
+                                                >
+                                                    <Map size={14} /> Map
+                                                </Button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </Card>
+
+
+
+            </div>
+            {selectedOrder && <OrderDetailsModal order={selectedOrder} onClose={() => setSelectedOrder(null)} />}
+        </>
+    );
 };

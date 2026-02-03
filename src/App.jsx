@@ -24,7 +24,7 @@ function App() {
           <Route path="/work" element={<WorkPage />} />
 
           {/* Login Page receives the setter to update auth state */}
-          <Route path="/login" element={<LoginPage setAuth={setAuth} />} />
+          <Route path="/login" element={<LoginPage auth={auth} setAuth={setAuth} />} />
 
           {/* Seller Flow: Login -> Onboarding -> Dashboard */}
           <Route

@@ -4,10 +4,10 @@ import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { ShoppingBag, Truck, Store } from 'lucide-react';
 
-export const LoginPage = ({ setAuth }) => {
+export const LoginPage = ({ auth, setAuth }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const initialRole = location.state?.role || 'buyer'; // 'seller' | 'delivery' | 'buyer'
+    const initialRole = location.state?.role || 'buyer';
 
     const [selectedRole, setSelectedRole] = useState(initialRole);
     const [email, setEmail] = useState('');
@@ -19,10 +19,21 @@ export const LoginPage = ({ setAuth }) => {
         }
     }, [location.state]);
 
+    // REDIRECT LOGIC: Only trigger AFTER auth state updates
+    useEffect(() => {
+        if (selectedRole === 'seller' && auth?.seller) {
+            navigate('/seller-onboarding', { replace: true });
+        } else if (selectedRole === 'delivery' && auth?.delivery) {
+            navigate('/delivery', { replace: true });
+        } else if (selectedRole === 'buyer' && auth?.buyer) {
+            navigate('/buy', { replace: true });
+        }
+    }, [auth, selectedRole, navigate]);
+
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // Log in based on the SELECTED role
+        // Just set the state. The useEffect above will handle the redirect.
         if (selectedRole === 'seller') {
             setAuth(prev => ({ ...prev, seller: true }));
         } else if (selectedRole === 'delivery') {
@@ -30,17 +41,6 @@ export const LoginPage = ({ setAuth }) => {
         } else {
             setAuth(prev => ({ ...prev, buyer: true }));
         }
-
-        // Determine where to go next based on ROLE
-        let target = location.state?.from?.pathname;
-
-        if (!target || target === '/login' || target === '/') {
-            if (selectedRole === 'seller') target = '/seller-onboarding';
-            else if (selectedRole === 'delivery') target = '/delivery';
-            else target = '/buy';
-        }
-
-        navigate(target, { replace: true });
     };
 
     const RoleTab = ({ role, icon: Icon, label }) => (

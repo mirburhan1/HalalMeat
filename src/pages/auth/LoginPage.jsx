@@ -30,9 +30,11 @@ export const LoginPage = ({ setAuth }) => {
 
         let target = from;
 
-        // 2. If 'from' is missing, or we are at /login, or /, default to the Buy Page for ALL roles
+        // 2. If 'from' is missing, or we are at /login, or /, default based on ROLE
         if (!target || target === '/login' || target === '/') {
-            target = '/buy';
+            if (role === 'seller') target = '/seller-onboarding';
+            else if (role === 'delivery') target = '/delivery';
+            else target = '/buy';
         }
 
         navigate(target, { replace: true });

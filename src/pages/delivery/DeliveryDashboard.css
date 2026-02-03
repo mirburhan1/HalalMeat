@@ -80,18 +80,17 @@
         padding: clamp(0.35rem, 1.5vw, 0.5rem) !important;
     }
 
-    /* Grid & Card Fluidity - Exact match to Seller Portal Response */
+    /* Grid layout for tablets and larger phones (2 columns) */
     .delivery-dashboard [style*="repeat(auto-fit"] {
-        grid-template-columns: 1fr !important;
-        /* Force single column for consistent centered look */
-        gap: clamp(0.5rem, 2vw, 1rem) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
     }
 
     /* Stat Cards - Fluid Height & Padding matching Seller Portal */
     .delivery-dashboard .stat-card {
-        min-height: clamp(50px, 12vh, 80px) !important;
-        padding: clamp(0.6rem, 2vw, 1.25rem) !important;
-        gap: clamp(0.6rem, 2vw, 1.25rem) !important;
+        min-height: clamp(80px, 12vh, 100px) !important;
+        padding: clamp(0.75rem, 2vw, 1.25rem) !important;
+        gap: clamp(0.5rem, 2vw, 1rem) !important;
 
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
@@ -114,7 +113,7 @@
     }
 
     .delivery-dashboard .stat-card p {
-        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+        font-size: clamp(0.6rem, 2vw, 0.75rem) !important;
         letter-spacing: 0.05em;
     }
 
@@ -125,15 +124,15 @@
 
     /* Table Fluidity */
     .delivery-dashboard .table-wrapper table {
-        font-size: clamp(0.65rem, 2.5vw, 0.9rem) !important;
-        min-width: unset !important;
-        width: 100% !important;
-        /* Prevent forcing wide width */
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+        min-width: 600px !important;
+        /* Force scroll */
     }
 
     .delivery-dashboard .table-wrapper th,
     .delivery-dashboard .table-wrapper td {
-        padding: clamp(0.45rem, 2vw, 0.75rem) clamp(0.25rem, 1.5vw, 0.75rem) !important;
+        padding: clamp(0.5rem, 2vw, 0.75rem) !important;
+        white-space: nowrap !important;
     }
 
     /* Ensure table card has same transparent glass style */
@@ -141,6 +140,20 @@
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
+    }
+}
+
+/* Mobile Portrait ( < 480px ) */
+@media (max-width: 480px) {
+
+    /* Force single column for very small screens */
+    .delivery-dashboard [style*="repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .delivery-dashboard .stat-card {
+        /* Slightly more compact specific for mobile portrait */
+        min-height: auto !important;
     }
 }
 

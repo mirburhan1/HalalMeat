@@ -88,7 +88,7 @@ export const LoginPage = ({ auth, setAuth }) => {
                         <RoleTab role="delivery" icon={Truck} label="Delivery" />
                     </div>
 
-                    <h2 style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '0.5rem', color: '#1f2937' }}>
+                    <h2 style={{ fontSize: 'clamp(1.25rem, 5vw, 1.75rem)', textAlign: 'center', marginBottom: '0.5rem', color: '#1f2937' }}>
                         {selectedRole === 'seller' ? 'Seller Portal' : selectedRole === 'delivery' ? 'Delivery Partner' : 'Welcome Back'}
                     </h2>
                     <p style={{ textAlign: 'center', marginBottom: '2rem', color: '#6b7280', fontSize: '0.95rem' }}>

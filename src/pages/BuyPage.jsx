@@ -59,7 +59,7 @@ export const BuyPage = () => {
                         style={{
                             width: '100%',
                             padding: '1.2rem 1.2rem 1.2rem 3.5rem',
-                            fontSize: '1.1rem',
+                            fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
                             borderRadius: '24px',
                             border: '1px solid rgba(0,0,0,0.1)',
                             background: 'rgba(255,255,255,0.9)',
@@ -100,7 +100,7 @@ export const BuyPage = () => {
                                 background: activeFilter === cat ? '#10b981' : 'white',
                                 color: activeFilter === cat ? 'white' : '#1f2937', /* Darker text for unselected */
                                 fontWeight: '600',
-                                fontSize: '0.95rem',
+                                fontSize: 'clamp(0.85rem, 2vw, 1rem)',
                                 cursor: 'pointer',
                                 boxShadow: activeFilter === cat ? '0 4px 12px rgba(16, 185, 129, 0.3)' : '0 2px 8px rgba(0,0,0,0.05)',
                                 transition: 'all 0.2s ease',

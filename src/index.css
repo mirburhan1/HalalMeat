@@ -147,152 +147,48 @@ button {
 }
 
 /* ========================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (FLUID TYPOGRAPHY)
    ======================================== */
 
-/* Mobile-first base styles are already applied above */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-  h1 {
-    font-size: 1.75rem !important;
-  }
-
-  h2 {
-    font-size: 1.5rem !important;
-  }
-
-  h3 {
-    font-size: 1.25rem !important;
-  }
-
-  .btn-3d {
-    font-size: 0.95rem;
-    padding: 0.85rem 1.75rem;
-  }
-
-  .card-3d {
-    border-radius: 20px;
-  }
+/* Fluid Typography Base */
+html {
+  font-size: 16px;
 }
 
-/* Tablets (768px and up) */
-@media (max-width: 768px) {
-
-  /* Hide desktop nav, show mobile */
-  .hidden-mobile {
-    display: none !important;
-  }
-
-  .show-mobile {
-    display: block !important;
-  }
-
-  /* Adjust grid layouts for smaller screens */
-  [style*="gridTemplateColumns"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Stack flex containers */
-  [style*="display: flex"][style*="gap"] {
-    flex-direction: column !important;
-  }
-
-  /* Reduce padding on containers */
-  body {
-    font-size: 14px;
-  }
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
 }
 
-/* Medium devices (tablets, 992px and up) */
-@media (min-width: 768px) and (max-width: 992px) {
-  .card-3d:hover {
-    transform: translateY(-4px) scale(1.005);
-  }
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
 }
 
-/* Large devices (desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  body {
-    font-size: 16px;
-  }
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
 }
 
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .card-3d:hover {
-    transform: none;
-  }
-
-  .card-3d:active {
-    transform: scale(0.98);
-  }
-
-  .btn-3d:hover {
-    transform: none;
-  }
-
-  .btn-3d:active {
-    transform: scale(0.95);
-  }
+h4 {
+  font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
 }
 
-/* Print styles */
-@media print {
-
-  .hidden-mobile,
-  .show-mobile,
-  nav,
-  button {
-    display: none !important;
-  }
+h5 {
+  font-size: clamp(1rem, 1.5vw, 1.25rem) !important;
 }
 
-/* =================================================================
-   GLOBAL RESPONSIVE OVERRIDES (Universal Device Support)
-   Targeting: Redmi 11, Samsung A-series, iPhone SE, etc.
-   ================================================================= */
+p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  /* Fluid body text */
+}
 
-/* Small Mobile (≤ 480px) */
+/* Specific component overrides for very small screens if needed */
 @media (max-width: 480px) {
-  :root {
-    --font-size-base: 14px;
-  }
-
-  body {
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 1.5rem !important;
-  }
-
-  h2 {
-    font-size: 1.25rem !important;
-  }
-
-  h3 {
-    font-size: 1.1rem !important;
-  }
-
-  h4 {
-    font-size: 1rem !important;
-  }
-
-  p {
-    font-size: 0.9rem !important;
-  }
-
-  /* Compact Buttons Globally */
   .btn-3d {
     padding: 0.75rem 1.5rem !important;
     font-size: 0.9rem !important;
   }
 
-  /* Compact Cards Globally */
   .card-3d {
-    padding: 1rem !important;
-    border-radius: 20px !important;
+    padding: 1.25rem !important;
   }
 }
 

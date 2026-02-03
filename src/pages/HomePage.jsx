@@ -27,8 +27,8 @@ export const HomePage = () => {
         <Card className="category-card" onClick={() => navigate('/buy')}>
             <div style={{ padding: '3rem 2rem', textAlign: 'center', cursor: 'pointer' }}>
                 <CategoryIcon />
-                <h3 style={{ fontSize: '1.75rem', color: '#111827', fontWeight: '700', marginBottom: '0.5rem' }}>{title}</h3>
-                <p style={{ color: '#6b7280', fontSize: '1rem', fontWeight: '500' }}>{sub}</p>
+                <h3 style={{ fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', color: '#111827', fontWeight: '700', marginBottom: '0.5rem' }}>{title}</h3>
+                <p style={{ color: '#6b7280', fontSize: 'clamp(0.9rem, 2vw, 1rem)', fontWeight: '500' }}>{sub}</p>
             </div>
         </Card>
     );
@@ -56,7 +56,7 @@ export const HomePage = () => {
                         textShadow: 'none'
                     }}>Delivered Fresh</span>
                 </h1>
-                <p style={{ fontSize: '1.5rem', color: '#111827', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: 1.6, fontWeight: '600', textShadow: '0 1px 2px rgba(255,255,255,1)' }}>
+                <p style={{ fontSize: 'clamp(1rem, 2vw, 1.5rem)', color: '#111827', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: 1.6, fontWeight: '600', textShadow: '0 1px 2px rgba(255,255,255,1)' }}>
                     Certified Zabiha Halal. Sourced from organic farms. Experience the difference in quality and purity.
                 </p>
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -73,7 +73,7 @@ export const HomePage = () => {
             <section style={{ marginBottom: '10rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Selection</span>
-                    <h2 style={{ fontSize: '3rem', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Shop by Category</h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Shop by Category</h2>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
@@ -88,7 +88,7 @@ export const HomePage = () => {
             <section style={{ marginBottom: '10rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{ color: '#10b981', fontWeight: 'bold', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Our Promise</span>
-                    <h2 style={{ fontSize: '3rem', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Why Choose Us?</h2>
+                    <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#111827', marginTop: '0.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>Why Choose Us?</h2>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>

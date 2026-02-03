@@ -1,102 +1,165 @@
 /* =================================================================
-   UNIVERSAL RESPONSIVE OVERRIDES (Delivery Dashboard)
-   Fluid design for all devices
+   FLUID RESPONSIVE OVERRIDES (Delivery Dashboard)
+   Matched to Seller Portal logic for consistent UX
    ================================================================= */
 
-/* 1. TABLET & SMALL LAPTOPS ( < 1024px ) */
+/* Tablet and below - Fluid Start (1024px) */
 @media (max-width: 1024px) {
     .delivery-dashboard .stat-card {
-        min-height: clamp(100px, 15vw, 160px) !important;
-        padding: 1.5rem !important;
-        display: flex;
-        flex-direction: column;
-        /* Stack content vertically */
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 0.75rem !important;
+        min-height: clamp(80px, 15vw, 140px) !important;
+        padding: clamp(0.75rem, 2vw, 1.5rem) !important;
+        gap: clamp(0.5rem, 1.5vw, 1.25rem) !important;
     }
 
-    /* Icon Container */
     .delivery-dashboard .stat-card>div:first-child {
-        width: 56px !important;
-        height: 56px !important;
-        margin-bottom: 0.25rem;
+        width: clamp(40px, 8vw, 64px) !important;
+        height: clamp(40px, 8vw, 64px) !important;
+    }
+
+    .delivery-dashboard .stat-card svg {
+        width: clamp(20px, 4vw, 32px) !important;
+        height: clamp(20px, 4vw, 32px) !important;
     }
 
     .delivery-dashboard .stat-card h3 {
-        font-size: 1.75rem !important;
-        margin: 0.25rem 0 !important;
-    }
-
-    .delivery-dashboard .stat-card p {
-        font-size: 0.85rem !important;
+        font-size: clamp(1.25rem, 4vw, 1.9rem) !important;
     }
 }
 
-/* 2. MOBILE LANDSCAPE & TABLET PORTRAIT ( < 768px ) */
+/* Mobile landscape and below (Fluid Range covering 768px down to 400px) */
 @media (max-width: 768px) {
 
-    /* Header: Stacked & Centered */
+    /* Header Scaling */
     .delivery-dashboard .header-section {
         flex-direction: column !important;
-        gap: 1.5rem !important;
+        align-items: center !important;
         text-align: center !important;
+        gap: clamp(1rem, 3vw, 1.5rem) !important;
     }
 
+    .delivery-dashboard .header-section h1 {
+        font-size: clamp(1.35rem, 5vw, 2.5rem) !important;
+    }
+
+    .delivery-dashboard .header-section p {
+        font-size: clamp(0.75rem, 3vw, 1rem) !important;
+    }
+
+    .delivery-dashboard .header-section>div:first-child {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Status Card */
     .delivery-dashboard .status-card {
         width: 100% !important;
         justify-content: space-between !important;
-        padding: 1rem 1.5rem !important;
-        background: rgba(255, 255, 255, 0.6) !important;
+        padding: clamp(0.6rem, 2vw, 1rem) !important;
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 
-    /* Grid: 2 Columns */
-    .delivery-dashboard [style*="repeat(auto-fit"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1rem !important;
-    }
-
-    /* Table: Force Scroll */
-    .delivery-dashboard .table-wrapper table {
-        min-width: 650px !important;
-    }
-
-    /* Table Header */
+    /* Table Header Scaling */
     .delivery-dashboard .table-header {
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.75rem !important;
+        padding: clamp(0.75rem, 3vw, 1.5rem) !important;
+    }
+
+    .delivery-dashboard .table-header h3 {
+        width: 100%;
+        font-size: clamp(1rem, 4vw, 1.25rem) !important;
     }
 
     .delivery-dashboard .table-header button {
         width: 100%;
+        font-size: clamp(0.75rem, 3vw, 0.9rem) !important;
+        padding: clamp(0.35rem, 1.5vw, 0.5rem) !important;
+    }
+
+    /* Grid & Card Fluidity - ALIGNED WITH SELLER PORTAL (1 Column) */
+    .delivery-dashboard [style*="repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+        gap: clamp(0.5rem, 2vw, 1rem) !important;
+    }
+
+    .delivery-dashboard .stat-card {
+        /* Fluid height: shrinks from 80px down to 50px */
+        min-height: clamp(50px, 12vh, 80px) !important;
+        padding: clamp(0.6rem, 2vw, 1.25rem) !important;
+        gap: clamp(0.6rem, 2vw, 1.25rem) !important;
+
+        /* Ensure Horizontal Layout like Seller Portal */
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        text-align: left !important;
+
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+
+    .delivery-dashboard .stat-card>div:first-child {
+        width: clamp(34px, 8vw, 44px) !important;
+        height: clamp(34px, 8vw, 44px) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .delivery-dashboard .stat-card svg {
+        width: clamp(18px, 4.5vw, 22px) !important;
+        height: clamp(18px, 4.5vw, 22px) !important;
+    }
+
+    /* Stat Card Content Fluidity */
+    .delivery-dashboard .stat-card>div:last-child {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .delivery-dashboard .stat-card h3 {
+        font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    .delivery-dashboard .stat-card p {
+        font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+        letter-spacing: 0.05em;
+        text-align: left !important;
+    }
+
+    .delivery-dashboard .stat-card span {
+        font-size: clamp(0.5rem, 2vw, 0.65rem) !important;
+        padding: clamp(0.1rem, 0.5vw, 0.2rem) clamp(0.25rem, 1vw, 0.4rem) !important;
+    }
+
+    /* Table Fluidity */
+    .delivery-dashboard .table-wrapper table {
+        font-size: clamp(0.65rem, 2.5vw, 0.9rem) !important;
+        min-width: unset !important;
+        width: 100% !important;
+    }
+
+    .delivery-dashboard .table-wrapper th,
+    .delivery-dashboard .table-wrapper td {
+        padding: clamp(0.45rem, 2vw, 0.75rem) clamp(0.25rem, 1.5vw, 0.75rem) !important;
+    }
+
+    /* Ensure table card has same transparent glass style */
+    .delivery-dashboard .table-card {
+        background: rgba(255, 255, 255, 0.5) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
     }
 }
 
-/* 3. MOBILE PORTRAIT ( < 480px ) */
-@media (max-width: 480px) {
-
-    /* Grid: 1 Column Stack */
-    .delivery-dashboard [style*="repeat(auto-fit"] {
-        grid-template-columns: 1fr !important;
-    }
-
-    /* Stat Cards: Compact vertical layout */
-    .delivery-dashboard .stat-card {
-        min-height: auto !important;
-        padding: 1.25rem !important;
-        /* Keep vertical centered */
-        flex-direction: column !important;
-    }
-
-    /* Header Text Scale */
-    .delivery-dashboard .header-section h1 {
-        font-size: 1.75rem !important;
-    }
-
-    /* Slightly smaller table scroll trigger */
+/* Edge Case: Ultra Small Mobile (≤ 360px) */
+@media (max-width: 360px) {
     .delivery-dashboard .table-wrapper table {
-        min-width: 500px !important;
+        min-width: 350px !important;
     }
 }

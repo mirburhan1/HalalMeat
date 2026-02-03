@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { WorkPage } from './pages/WorkPage';
 import { LoginPage } from './pages/auth/LoginPage';
 import { SellerDashboard } from './pages/seller/SellerDashboard';
+import { SellerProducts } from './pages/seller/SellerProducts';
 import { BuyerDashboard } from './pages/buyer/BuyerDashboard';
 import { DeliveryDashboard } from './pages/delivery/DeliveryDashboard';
 import { BuyPage } from './pages/BuyPage';
@@ -35,6 +36,10 @@ function App() {
           <Route
             path="/seller"
             element={auth.seller ? <SellerDashboard /> : <Navigate to="/login" state={{ role: 'seller' }} replace />}
+          />
+          <Route
+            path="/seller/products"
+            element={auth.seller ? <SellerProducts /> : <Navigate to="/login" state={{ role: 'seller' }} replace />}
           />
 
           <Route path="/buyer" element={<BuyerDashboard isLoggedIn={auth.buyer} />} />

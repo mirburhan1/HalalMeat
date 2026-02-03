@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Plus, Package, DollarSign, Archive, Edit2, Trash2 } from 'lucide-react';
 import './SellerDashboard.css';
 
 export const SellerDashboard = () => {
+    const navigate = useNavigate();
     const [products] = useState([
         { id: 1, name: 'Fresh Lamb Chops', price: 25, stock: 15, unit: 'kg', status: 'Active' },
         { id: 2, name: 'Premium Beef Steak', price: 30, stock: 8, unit: 'kg', status: 'Low Stock' },
@@ -49,14 +51,12 @@ export const SellerDashboard = () => {
         <div className="seller-dashboard" style={{ color: '#1f2937', maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
 
             {/* Header */}
+            {/* Header */}
             <div className="header-section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', paddingTop: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
                     <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: '#111827', marginBottom: '0.25rem' }}>Seller Portal</h1>
                     <p style={{ color: '#6b7280' }}>Manage your shop and inventory</p>
                 </div>
-                <Button variant="primary" style={{ padding: '0.75rem 1.5rem' }}>
-                    <Plus size={20} style={{ marginRight: '8px' }} /> Add New Product
-                </Button>
             </div>
 
             {/* Stats Overview */}
@@ -112,6 +112,29 @@ export const SellerDashboard = () => {
                     </table>
                 </div>
             </Card>
+
+
+            {/* CTA: Sell New Products */}
+            <div style={{ marginTop: '3rem' }}>
+                <Card style={{
+                    padding: '3rem',
+                    textAlign: 'center',
+                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1))',
+                    border: '1px solid rgba(16, 185, 129, 0.2)'
+                }}>
+                    <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '800', marginBottom: '1rem', color: '#111827' }}>Ready to Grow Your Business?</h2>
+                    <p style={{ color: '#4b5563', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem', fontSize: '1.1rem' }}>
+                        Add new high-quality halal meat products to your store. Upload photos, set prices, and track your sales history all in one place.
+                    </p>
+                    <Button
+                        variant="primary"
+                        onClick={() => navigate('/seller/products')}
+                        style={{ padding: '1rem 3rem', fontSize: '1.1rem' }}
+                    >
+                        <Plus size={20} style={{ marginRight: '8px' }} /> Sell Your Products
+                    </Button>
+                </Card>
+            </div>
 
 
 

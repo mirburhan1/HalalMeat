@@ -92,6 +92,12 @@
         padding: clamp(0.75rem, 2vw, 1.25rem) !important;
         gap: clamp(0.5rem, 2vw, 1rem) !important;
 
+        /* CENTER ALIGNMENT FOR TABLET */
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+
         background: rgba(255, 255, 255, 0.5) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
@@ -107,14 +113,21 @@
         height: clamp(18px, 4.5vw, 22px) !important;
     }
 
-    /* Stat Card Content Fluidity */
+    /* Stat Card Content Fluidity - ALL CENTERED */
+    .delivery-dashboard .stat-card>div:last-child {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
     .delivery-dashboard .stat-card h3 {
         font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+        text-align: center !important;
     }
 
     .delivery-dashboard .stat-card p {
         font-size: clamp(0.6rem, 2vw, 0.75rem) !important;
         letter-spacing: 0.05em;
+        text-align: center !important;
     }
 
     .delivery-dashboard .stat-card span {

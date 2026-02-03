@@ -59,46 +59,50 @@ export const OrderDetailsModal = ({ order, onClose }) => {
                         </div>
                     </div>
 
-                    {/* Maps Split View */}
+                    {/* Maps Split View - Tri-Partite Logic */}
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
 
-                        {/* PICKUP */}
-                        <div>
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <div style={{ width: '24px', height: '24px', background: '#dbeafe', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>1</div>
-                                Pickup Location
-                            </h3>
-                            <div style={{ marginBottom: '0.5rem', fontWeight: '600', color: '#374151' }}>{order.pickup}</div>
-                            <div style={{ height: '250px', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
-                                <iframe
-                                    width="100%" height="100%" frameBorder="0" style={{ border: 0 }}
-                                    src={`https://maps.google.com/maps?q=${pickupQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                    allowFullScreen
-                                ></iframe>
+                        {/* PICKUP VIEW - Only show if pending/pickup phase */}
+                        {(order.type === 'pickup' || order.status === 'Pending') && (
+                            <div>
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <div style={{ width: '24px', height: '24px', background: '#dbeafe', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>1</div>
+                                    Pickup Location (Seller)
+                                </h3>
+                                <div style={{ marginBottom: '0.5rem', fontWeight: '600', color: '#374151' }}>{order.pickup}</div>
+                                <div style={{ height: '300px', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+                                    <iframe
+                                        width="100%" height="100%" frameBorder="0" style={{ border: 0 }}
+                                        src={`https://maps.google.com/maps?q=${pickupQuery}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                                <Button variant="outline" style={{ marginTop: '0.75rem', width: '100%', fontSize: '0.9rem' }}>
+                                    <Navigation size={16} style={{ marginRight: '8px' }} /> Navigate to Shop
+                                </Button>
                             </div>
-                            <Button variant="outline" style={{ marginTop: '0.75rem', width: '100%', fontSize: '0.9rem' }}>
-                                <Navigation size={16} style={{ marginRight: '8px' }} /> Navigate to Shop
-                            </Button>
-                        </div>
+                        )}
 
-                        {/* DROPOFF */}
-                        <div>
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <div style={{ width: '24px', height: '24px', background: '#d1fae5', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669' }}>2</div>
-                                Dropoff Location
-                            </h3>
-                            <div style={{ marginBottom: '0.5rem', fontWeight: '600', color: '#374151' }}>{order.dropoff}</div>
-                            <div style={{ height: '250px', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
-                                <iframe
-                                    width="100%" height="100%" frameBorder="0" style={{ border: 0 }}
-                                    src={`https://maps.google.com/maps?q=${dropoffQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                    allowFullScreen
-                                ></iframe>
+                        {/* DROPOFF VIEW - Only show if delivery phase or complete */}
+                        {(order.type === 'delivery' || order.status === 'Completed') && (
+                            <div>
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    <div style={{ width: '24px', height: '24px', background: '#d1fae5', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669' }}>2</div>
+                                    Dropoff Location (Customer)
+                                </h3>
+                                <div style={{ marginBottom: '0.5rem', fontWeight: '600', color: '#374151' }}>{order.dropoff}</div>
+                                <div style={{ height: '300px', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+                                    <iframe
+                                        width="100%" height="100%" frameBorder="0" style={{ border: 0 }}
+                                        src={`https://maps.google.com/maps?q=${dropoffQuery}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                                <Button variant="primary" style={{ marginTop: '0.75rem', width: '100%', fontSize: '0.9rem' }}>
+                                    <Navigation size={16} style={{ marginRight: '8px' }} /> Navigate to Customer
+                                </Button>
                             </div>
-                            <Button variant="primary" style={{ marginTop: '0.75rem', width: '100%', fontSize: '0.9rem' }}>
-                                <Navigation size={16} style={{ marginRight: '8px' }} /> Navigate to Customer
-                            </Button>
-                        </div>
+                        )}
                     </div>
 
 

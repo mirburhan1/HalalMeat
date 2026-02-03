@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { Clock, DollarSign, CheckCircle2, TrendingUp, Bell, Map } from 'lucide-react';
+import { Clock, DollarSign, CheckCircle2, TrendingUp, Bell, Map, Package } from 'lucide-react';
 import { OrderDetailsModal } from './OrderDetailsModal';
 import './DeliveryDashboard.css';
 
@@ -9,13 +9,14 @@ export const DeliveryDashboard = () => {
     const [isAvailable, setIsAvailable] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [notifications, setNotifications] = useState(2); // Mock notification count
+    const [showNotifications, setShowNotifications] = useState(false); // Toggle dropdown
 
     // Mock Data for Admin Table
     const deliveries = [
-        { id: '#DLV-1001', time: '10:30 AM', pickup: 'Ahmed Meats', dropoff: 'Downtown Apt 4B', amount: '$12.50', status: 'Completed' },
-        { id: '#DLV-1002', time: '11:15 AM', pickup: 'Fresh Halal Cut', dropoff: 'Suburbs Ln 22', amount: '$8.00', status: 'Completed' },
-        { id: '#DLV-1003', time: '12:45 PM', pickup: 'City Butchers', dropoff: 'Business Park', amount: '$15.00', status: 'In Progress' },
-        { id: '#DLV-1004', time: '02:00 PM', pickup: 'Premium Cuts', dropoff: 'Lal Chowk', amount: '$10.50', status: 'Pending' },
+        { id: '#DLV-1001', time: '10:30 AM', pickup: 'Ahmed Meats', dropoff: 'Downtown Apt 4B', amount: '$12.50', status: 'Completed', type: 'delivery' },
+        { id: '#DLV-1002', time: '11:15 AM', pickup: 'Fresh Halal Cut', dropoff: 'Suburbs Ln 22', amount: '$8.00', status: 'Completed', type: 'delivery' },
+        { id: '#DLV-1003', time: '12:45 PM', pickup: 'City Butchers', dropoff: 'Business Park', amount: '$15.00', status: 'In Progress', type: 'pickup' }, // Context: Pickup
+        { id: '#DLV-1004', time: '02:00 PM', pickup: 'Premium Cuts', dropoff: 'Lal Chowk', amount: '$10.50', status: 'Pending', type: 'pickup' },
     ];
 
     /* "Cards 3D has bad alignment" -> Ensuring all surface elements are Cards and aligned */
@@ -70,17 +71,46 @@ export const DeliveryDashboard = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
 
                         {/* Notification Bell */}
-                        <div style={{ position: 'relative', cursor: 'pointer', padding: '0.5rem', background: '#fff', borderRadius: '50%', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>
-                            <Bell size={24} color="#6b7280" />
-                            {notifications > 0 && (
-                                <span style={{
-                                    position: 'absolute', top: '-5px', right: '-5px',
-                                    background: '#ef4444', color: 'white', fontSize: '0.75rem', fontWeight: 'bold',
-                                    width: '20px', height: '20px', borderRadius: '50%',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                        <div style={{ position: 'relative' }}>
+                            <div
+                                style={{ position: 'relative', cursor: 'pointer', padding: '0.5rem', background: '#fff', borderRadius: '50%', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}
+                                onClick={() => setShowNotifications(!showNotifications)}
+                            >
+                                <Bell size={24} color="#6b7280" />
+                                {notifications > 0 && (
+                                    <span style={{
+                                        position: 'absolute', top: '-5px', right: '-5px',
+                                        background: '#ef4444', color: 'white', fontSize: '0.75rem', fontWeight: 'bold',
+                                        width: '20px', height: '20px', borderRadius: '50%',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}>
+                                        {notifications}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Mission Brief Dropdown */}
+                            {showNotifications && (
+                                <div style={{
+                                    position: 'absolute', top: '120%', right: 0, width: '320px',
+                                    background: 'white', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)',
+                                    zIndex: 50, overflow: 'hidden', border: '1px solid #f3f4f6'
                                 }}>
-                                    {notifications}
-                                </span>
+                                    <div style={{ padding: '1rem', borderBottom: '1px solid #f3f4f6', fontWeight: 'bold' }}>Mission Brief</div>
+                                    <div style={{ padding: '1rem', display: 'flex', gap: '1rem', background: '#fffbeb' }}>
+                                        <div style={{ width: '40px', height: '40px', background: '#f59e0b', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', flexShrink: 0 }}>
+                                            <Package size={20} />
+                                        </div>
+                                        <div>
+                                            <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#b45309', marginBottom: '0.25rem' }}>INBOUND PICKUP</div>
+                                            <div style={{ fontSize: '0.9rem', fontWeight: '600', marginBottom: '0.25rem' }}>New order at City Butchers</div>
+                                            <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>Expected by 1:00 PM</div>
+                                        </div>
+                                    </div>
+                                    <div style={{ padding: '0.75rem', textAlign: 'center', borderTop: '1px solid #f3f4f6', fontSize: '0.85rem', color: '#3b82f6', cursor: 'pointer' }}>
+                                        View All Missions
+                                    </div>
+                                </div>
                             )}
                         </div>
 
@@ -142,7 +172,13 @@ export const DeliveryDashboard = () => {
                                                     background: item.status === 'Completed' ? '#ecfdf5' : item.status === 'In Progress' ? '#eff6ff' : '#fff7ed',
                                                     color: item.status === 'Completed' ? '#047857' : item.status === 'In Progress' ? '#1d4ed8' : '#c2410c'
                                                 }}>
-                                                    {item.status}
+                                                    {item.status === 'In Progress' ? (
+                                                        item.type === 'pickup' ? (
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>📦 PICKUP</span>
+                                                        ) : (
+                                                            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>🚀 DELIVER</span>
+                                                        )
+                                                    ) : item.status}
                                                 </span>
                                                 <Button
                                                     variant="outline"

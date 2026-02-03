@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { Clock, MapPin, DollarSign, Package, CheckCircle2, XCircle, TrendingUp, Bell, Map } from 'lucide-react';
+import { Clock, DollarSign, CheckCircle2, TrendingUp, Bell, Map } from 'lucide-react';
 import { OrderDetailsModal } from './OrderDetailsModal';
 import './DeliveryDashboard.css';
 
@@ -161,7 +161,7 @@ export const DeliveryDashboard = () => {
 
 
 
-                </div >
+                </div>
                 {selectedOrder && <OrderDetailsModal order={selectedOrder} onClose={() => setSelectedOrder(null)} />}
             </>
             );

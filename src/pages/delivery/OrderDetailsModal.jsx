@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, MapPin, Navigation, Clock, DollarSign } from 'lucide-react';
+import { X, Navigation, Clock, DollarSign } from 'lucide-react';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 
